@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/utf8test.dir/utf8test.c.o  -o utf8test -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

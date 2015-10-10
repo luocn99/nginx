@@ -15,8 +15,8 @@
 ROOT_PATH=`pwd`
 UTIL_PATH=$ROOT_PATH/third-lib/
 PCRE_PATH=$UTIL_PATH/pcre-8.36
-OPENSSL_PATH=$UTIL_PATH/boringssl/openssl
-NGX_PATH="./nginx-1.9.4"
+OPENSSL_PATH=$UTIL_PATH/libressl-2.3.1/
+NGX_PATH="./nginx-1.9.5"
 cd $NGX_PATH
 ./configure \
     --with-http_ssl_module \
@@ -24,11 +24,10 @@ cd $NGX_PATH
     --with-http_addition_module \
     --with-http_stub_status_module \
     --with-http_sub_module \
-    --with-http_spdy_module \
+    --with-http_v2_module \
     --with-http_gzip_static_module \
     --with-debug \
     --with-pcre=$PCRE_PATH \
-    #--with-openssl=/data1/lancelotluo/https/openssl/openssl-1.0.2d/myssl \
     --with-openssl=$OPENSSL_PATH \
     --with-ld-opt="-lrt"
 #    --add-module=src/http/modules/thirdparty_module \

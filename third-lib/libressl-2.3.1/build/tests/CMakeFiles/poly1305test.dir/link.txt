@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/poly1305test.dir/poly1305test.c.o  -o poly1305test -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

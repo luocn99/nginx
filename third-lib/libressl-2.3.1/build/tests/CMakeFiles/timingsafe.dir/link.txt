@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/timingsafe.dir/timingsafe.c.o  -o timingsafe -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

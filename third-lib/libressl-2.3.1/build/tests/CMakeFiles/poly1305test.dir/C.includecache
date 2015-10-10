@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../tests/../include/compat/stdio.h
+../ucrt/stdlib.h
+-
+../ucrt/corecrt_io.h
+-
+../ucrt/stdio.h
+-
+../include/stdio.h
+-
+stdarg.h
+-
+
+../tests/../include/openssl/opensslconf.h
+openssl/opensslfeatures.h
+-
+
+../tests/../include/openssl/opensslfeatures.h
+
+../tests/../include/openssl/poly1305.h
+openssl/opensslconf.h
+-
+stddef.h
+-
+
+/home/lancelot/git/nginx/third-lib/libressl-2.3.1/tests/poly1305test.c
+stdio.h
+-
+openssl/poly1305.h
+-
+

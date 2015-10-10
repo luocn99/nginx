@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/exptest.dir/exptest.c.o  -o exptest -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

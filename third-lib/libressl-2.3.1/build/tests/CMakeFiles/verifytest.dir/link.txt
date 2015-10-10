@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/verifytest.dir/verifytest.c.o  -o verifytest -rdynamic ../tls/libtls.a ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

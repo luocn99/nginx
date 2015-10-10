@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/sha512test.dir/sha512test.c.o  -o sha512test -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/arc4randomforktest.dir/arc4randomforktest.c.o  -o arc4randomforktest -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

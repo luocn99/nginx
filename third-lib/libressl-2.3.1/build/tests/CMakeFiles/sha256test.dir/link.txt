@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/sha256test.dir/sha256test.c.o  -o sha256test -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

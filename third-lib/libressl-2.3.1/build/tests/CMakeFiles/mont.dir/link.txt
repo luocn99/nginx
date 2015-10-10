@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/mont.dir/mont.c.o  -o mont -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

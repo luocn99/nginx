@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/asn1time.dir/asn1time.c.o  -o asn1time -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

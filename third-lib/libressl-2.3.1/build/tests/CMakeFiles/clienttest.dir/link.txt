@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/clienttest.dir/clienttest.c.o  -o clienttest -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

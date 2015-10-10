@@ -1,0 +1,198 @@
+Determining if the function reallocarray exists failed with the following output:
+Change Dir: /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3203743759/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3203743759.dir/build.make CMakeFiles/cmTryCompileExec3203743759.dir/build
+make[1]: Entering directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3203743759.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=reallocarray -fPIE   -o CMakeFiles/cmTryCompileExec3203743759.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.0/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec3203743759
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3203743759.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=reallocarray    CMakeFiles/cmTryCompileExec3203743759.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3203743759 -rdynamic 
+CMakeFiles/cmTryCompileExec3203743759.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x15): undefined reference to `reallocarray'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTryCompileExec3203743759.dir/build.make:88: recipe for target 'cmTryCompileExec3203743759' failed
+make[1]: Leaving directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec3203743759/fast' failed
+make[1]: *** [cmTryCompileExec3203743759] Error 1
+make: *** [cmTryCompileExec3203743759/fast] Error 2
+
+
+Determining if the function strlcat exists failed with the following output:
+Change Dir: /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2339707874/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2339707874.dir/build.make CMakeFiles/cmTryCompileExec2339707874.dir/build
+make[1]: Entering directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2339707874.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strlcat -fPIE   -o CMakeFiles/cmTryCompileExec2339707874.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.0/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec2339707874
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2339707874.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strlcat    CMakeFiles/cmTryCompileExec2339707874.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2339707874 -rdynamic 
+CMakeFiles/cmTryCompileExec2339707874.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x15): undefined reference to `strlcat'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTryCompileExec2339707874.dir/build.make:88: recipe for target 'cmTryCompileExec2339707874' failed
+make[1]: Leaving directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec2339707874/fast' failed
+make[1]: *** [cmTryCompileExec2339707874] Error 1
+make: *** [cmTryCompileExec2339707874/fast] Error 2
+
+
+Determining if the function strlcat exists failed with the following output:
+Change Dir: /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec919366538/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec919366538.dir/build.make CMakeFiles/cmTryCompileExec919366538.dir/build
+make[1]: Entering directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec919366538.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strlcat -fPIE   -o CMakeFiles/cmTryCompileExec919366538.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.0/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec919366538
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec919366538.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strlcat    CMakeFiles/cmTryCompileExec919366538.dir/CheckFunctionExists.c.o  -o cmTryCompileExec919366538 -rdynamic 
+CMakeFiles/cmTryCompileExec919366538.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x15): undefined reference to `strlcat'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTryCompileExec919366538.dir/build.make:88: recipe for target 'cmTryCompileExec919366538' failed
+make[1]: Leaving directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec919366538/fast' failed
+make[1]: *** [cmTryCompileExec919366538] Error 1
+make: *** [cmTryCompileExec919366538/fast] Error 2
+
+
+Determining if the function arc4random_buf exists failed with the following output:
+Change Dir: /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2340491998/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2340491998.dir/build.make CMakeFiles/cmTryCompileExec2340491998.dir/build
+make[1]: Entering directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2340491998.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=arc4random_buf -fPIE   -o CMakeFiles/cmTryCompileExec2340491998.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.0/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec2340491998
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2340491998.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=arc4random_buf    CMakeFiles/cmTryCompileExec2340491998.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2340491998 -rdynamic 
+CMakeFiles/cmTryCompileExec2340491998.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x15): undefined reference to `arc4random_buf'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTryCompileExec2340491998.dir/build.make:88: recipe for target 'cmTryCompileExec2340491998' failed
+make[1]: Leaving directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec2340491998/fast' failed
+make[1]: *** [cmTryCompileExec2340491998] Error 1
+make: *** [cmTryCompileExec2340491998/fast] Error 2
+
+
+Determining if the function explicit_bzero exists failed with the following output:
+Change Dir: /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec511846615/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec511846615.dir/build.make CMakeFiles/cmTryCompileExec511846615.dir/build
+make[1]: Entering directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec511846615.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=explicit_bzero -fPIE   -o CMakeFiles/cmTryCompileExec511846615.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.0/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec511846615
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec511846615.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=explicit_bzero    CMakeFiles/cmTryCompileExec511846615.dir/CheckFunctionExists.c.o  -o cmTryCompileExec511846615 -rdynamic 
+CMakeFiles/cmTryCompileExec511846615.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x15): undefined reference to `explicit_bzero'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTryCompileExec511846615.dir/build.make:88: recipe for target 'cmTryCompileExec511846615' failed
+make[1]: Leaving directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec511846615/fast' failed
+make[1]: *** [cmTryCompileExec511846615] Error 1
+make: *** [cmTryCompileExec511846615/fast] Error 2
+
+
+Determining if the function getentropy exists failed with the following output:
+Change Dir: /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec22506960/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec22506960.dir/build.make CMakeFiles/cmTryCompileExec22506960.dir/build
+make[1]: Entering directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec22506960.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=getentropy -fPIE   -o CMakeFiles/cmTryCompileExec22506960.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.0/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec22506960
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec22506960.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=getentropy    CMakeFiles/cmTryCompileExec22506960.dir/CheckFunctionExists.c.o  -o cmTryCompileExec22506960 -rdynamic 
+CMakeFiles/cmTryCompileExec22506960.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x15): undefined reference to `getentropy'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTryCompileExec22506960.dir/build.make:88: recipe for target 'cmTryCompileExec22506960' failed
+make[1]: Leaving directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec22506960/fast' failed
+make[1]: *** [cmTryCompileExec22506960] Error 1
+make: *** [cmTryCompileExec22506960/fast] Error 2
+
+
+Determining if the function timingsafe_bcmp exists failed with the following output:
+Change Dir: /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec655288825/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec655288825.dir/build.make CMakeFiles/cmTryCompileExec655288825.dir/build
+make[1]: Entering directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec655288825.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=timingsafe_bcmp -fPIE   -o CMakeFiles/cmTryCompileExec655288825.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.0/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec655288825
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec655288825.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=timingsafe_bcmp    CMakeFiles/cmTryCompileExec655288825.dir/CheckFunctionExists.c.o  -o cmTryCompileExec655288825 -rdynamic 
+CMakeFiles/cmTryCompileExec655288825.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x15): undefined reference to `timingsafe_bcmp'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTryCompileExec655288825.dir/build.make:88: recipe for target 'cmTryCompileExec655288825' failed
+make[1]: Leaving directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec655288825/fast' failed
+make[1]: *** [cmTryCompileExec655288825] Error 1
+make: *** [cmTryCompileExec655288825/fast] Error 2
+
+
+Determining if the function timingsafe_memcmp exists failed with the following output:
+Change Dir: /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1516134978/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1516134978.dir/build.make CMakeFiles/cmTryCompileExec1516134978.dir/build
+make[1]: Entering directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1516134978.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=timingsafe_memcmp -fPIE   -o CMakeFiles/cmTryCompileExec1516134978.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.0/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1516134978
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1516134978.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=timingsafe_memcmp    CMakeFiles/cmTryCompileExec1516134978.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1516134978 -rdynamic 
+CMakeFiles/cmTryCompileExec1516134978.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x15): undefined reference to `timingsafe_memcmp'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTryCompileExec1516134978.dir/build.make:88: recipe for target 'cmTryCompileExec1516134978' failed
+make[1]: Leaving directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+make[1]: *** [cmTryCompileExec1516134978] Error 1
+Makefile:118: recipe for target 'cmTryCompileExec1516134978/fast' failed
+make: *** [cmTryCompileExec1516134978/fast] Error 2
+
+
+Determining if the function strtonum exists failed with the following output:
+Change Dir: /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec611358759/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec611358759.dir/build.make CMakeFiles/cmTryCompileExec611358759.dir/build
+make[1]: Entering directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec611358759.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtonum -fPIE   -o CMakeFiles/cmTryCompileExec611358759.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.0/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec611358759
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec611358759.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtonum    CMakeFiles/cmTryCompileExec611358759.dir/CheckFunctionExists.c.o  -o cmTryCompileExec611358759 -rdynamic 
+CMakeFiles/cmTryCompileExec611358759.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x15): undefined reference to `strtonum'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTryCompileExec611358759.dir/build.make:88: recipe for target 'cmTryCompileExec611358759' failed
+make[1]: Leaving directory '/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/CMakeFiles/CMakeTmp'
+Makefile:118: recipe for target 'cmTryCompileExec611358759/fast' failed
+make[1]: *** [cmTryCompileExec611358759] Error 1
+make: *** [cmTryCompileExec611358759/fast] Error 2
+
+

@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/gost2814789t.dir/gost2814789t.c.o  -o gost2814789t -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

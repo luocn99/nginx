@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/cts128test.dir/cts128test.c.o  -o cts128test -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

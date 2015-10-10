@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/ecdhtest.dir/ecdhtest.c.o  -o ecdhtest -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

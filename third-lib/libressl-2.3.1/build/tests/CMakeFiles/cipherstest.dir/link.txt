@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/cipherstest.dir/cipherstest.c.o  -o cipherstest -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

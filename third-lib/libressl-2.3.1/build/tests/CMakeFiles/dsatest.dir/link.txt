@@ -1,0 +1,1 @@
+/usr/bin/cc      CMakeFiles/dsatest.dir/dsatest.c.o  -o dsatest -rdynamic ../ssl/libssl.a ../crypto/libcrypto.a -lrt 

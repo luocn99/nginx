@@ -1,0 +1,2 @@
+/usr/bin/ar cr libtls.a  CMakeFiles/tls-objects.dir/tls.c.o CMakeFiles/tls-objects.dir/tls_client.c.o CMakeFiles/tls-objects.dir/tls_config.c.o CMakeFiles/tls-objects.dir/tls_conninfo.c.o CMakeFiles/tls-objects.dir/tls_server.c.o CMakeFiles/tls-objects.dir/tls_peer.c.o CMakeFiles/tls-objects.dir/tls_util.c.o CMakeFiles/tls-objects.dir/tls_verify.c.o
+/usr/bin/ranlib libtls.a
