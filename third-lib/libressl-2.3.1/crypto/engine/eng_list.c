@@ -348,15 +348,23 @@ ENGINE *
 ENGINE_by_id(const char *id)
 {
 	ENGINE *iterator;
+	ENGINE *tmp;
+	tmp = engine_list_head;
+    while (tmp) {
+        printf("my engine iterator, id%s\n", tmp->id);
+		tmp = tmp->next;
+    }
 
+    printf("my engine, file:%s line:%d\n", __FILE__, __LINE__);
 	if (id == NULL) {
 		ENGINEerr(ENGINE_F_ENGINE_BY_ID,
 		    ERR_R_PASSED_NULL_PARAMETER);
 		return NULL;
 	}
 	CRYPTO_w_lock(CRYPTO_LOCK_ENGINE);
+    printf("my engine, file:%s line:%d\n", __FILE__, __LINE__);
 	iterator = engine_list_head;
-	while (iterator && (strcmp(id, iterator->id) != 0))
+	while (iterator && (strcmp(id, iterator->id) != 0) && printf("my engine iterator, id%s\n", iterator->id))
 		iterator = iterator->next;
 	if (iterator) {
 		/* We need to return a structural reference. If this is an
@@ -376,6 +384,7 @@ ENGINE_by_id(const char *id)
 		}
 	}
 	CRYPTO_w_unlock(CRYPTO_LOCK_ENGINE);
+    printf("my engine, file:%s line:%d\n", __FILE__, __LINE__);
 
 	if (iterator == NULL) {
 		ENGINEerr(ENGINE_F_ENGINE_BY_ID, ENGINE_R_NO_SUCH_ENGINE);

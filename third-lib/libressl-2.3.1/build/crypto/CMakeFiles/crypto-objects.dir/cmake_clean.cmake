@@ -281,6 +281,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/crypto-objects.dir/engine/tb_rand.c.o"
   "CMakeFiles/crypto-objects.dir/engine/tb_rsa.c.o"
   "CMakeFiles/crypto-objects.dir/engine/tb_store.c.o"
+  "CMakeFiles/crypto-objects.dir/engine/tgw_engine.c.o"
   "CMakeFiles/crypto-objects.dir/err/err.c.o"
   "CMakeFiles/crypto-objects.dir/err/err_all.c.o"
   "CMakeFiles/crypto-objects.dir/err/err_prn.c.o"

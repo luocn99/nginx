@@ -323,7 +323,8 @@ void ENGINE_load_dynamic(void);
 void ENGINE_load_padlock(void);
 #endif
 void ENGINE_load_builtin_engines(void);
-
+//add by lancelot at 2015/10/12
+void ENGINE_load_tgw(void);
 /* Get and set global flags (ENGINE_TABLE_FLAG_***) for the implementation
  * "registry" handling. */
 unsigned int ENGINE_get_table_flags(void);

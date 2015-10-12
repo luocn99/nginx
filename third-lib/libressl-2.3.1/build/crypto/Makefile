@@ -6963,6 +6963,30 @@ engine/tb_store.c.s:
 	cd /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build && $(MAKE) -f crypto/CMakeFiles/crypto-objects.dir/build.make crypto/CMakeFiles/crypto-objects.dir/engine/tb_store.c.s
 .PHONY : engine/tb_store.c.s
 
+engine/tgw_engine.o: engine/tgw_engine.c.o
+.PHONY : engine/tgw_engine.o
+
+# target to build an object file
+engine/tgw_engine.c.o:
+	cd /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build && $(MAKE) -f crypto/CMakeFiles/crypto-objects.dir/build.make crypto/CMakeFiles/crypto-objects.dir/engine/tgw_engine.c.o
+.PHONY : engine/tgw_engine.c.o
+
+engine/tgw_engine.i: engine/tgw_engine.c.i
+.PHONY : engine/tgw_engine.i
+
+# target to preprocess a source file
+engine/tgw_engine.c.i:
+	cd /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build && $(MAKE) -f crypto/CMakeFiles/crypto-objects.dir/build.make crypto/CMakeFiles/crypto-objects.dir/engine/tgw_engine.c.i
+.PHONY : engine/tgw_engine.c.i
+
+engine/tgw_engine.s: engine/tgw_engine.c.s
+.PHONY : engine/tgw_engine.s
+
+# target to generate assembly for a file
+engine/tgw_engine.c.s:
+	cd /home/lancelot/git/nginx/third-lib/libressl-2.3.1/build && $(MAKE) -f crypto/CMakeFiles/crypto-objects.dir/build.make crypto/CMakeFiles/crypto-objects.dir/engine/tgw_engine.c.s
+.PHONY : engine/tgw_engine.c.s
+
 err/err.o: err/err.c.o
 .PHONY : err/err.o
 
@@ -14209,6 +14233,9 @@ help:
 	@echo "... engine/tb_store.o"
 	@echo "... engine/tb_store.i"
 	@echo "... engine/tb_store.s"
+	@echo "... engine/tgw_engine.o"
+	@echo "... engine/tgw_engine.i"
+	@echo "... engine/tgw_engine.s"
 	@echo "... err/err.o"
 	@echo "... err/err.i"
 	@echo "... err/err.s"
