@@ -1,0 +1,23 @@
+syntax = "proto3";
+message tls_message {
+    int32  version  = 1;
+    int32  id       = 2;
+    string private_key  = 3;
+    string encryt_txt   = 4;
+}
+
+message rsa_dec_req {
+    int32   id = 1;
+    int32   version = 2;
+    int32   type    = 3;
+    int32   out_len = 4;
+    int32   in_len  = 5;
+    int32   max_out = 6;
+    int32   padding = 7;
+    bytes   public_key  = 10;
+    bytes   private_key = 11;
+    int32   private_key_len = 15;
+    bytes   encrypt_txt = 12;
+    bytes   decrypt_txt = 13;
+}
+
