@@ -7,6 +7,7 @@
 #include "openssl/rsa.h"
 
 #include "tgw_engine.h"
+#include "tls_message.pb-c.h"
 /*
 static int e_gmp_init(ENGINE *e);
 static int e_gmp_finish(ENGINE *e);
@@ -594,6 +595,18 @@ static int tgw_rsa_private_decrypt(int flen, const unsigned char *from,
 			goto err;
 	}
 
+    printf("flags:%d, dmp1:%s dmq1:%s iqmp:%s\n", rsa->flags, rsa->dmp1 == NULL ? "null": "notnull",
+            rsa->dmq1 == NULL ? "null" : "notnull", rsa->iqmp == NULL ? "null" : "notnull");
+    uint8_t *key_buf = NULL;
+    int k_len = i2d_RSAPrivateKey(rsa, &key_buf);
+    printf("i2d_RSAPrivateKey, key len:%d\n", k_len);
+
+    RSA *rsa_t = d2i_RSAPrivateKey(NULL, &key_buf, k_len);
+    printf("flags:%d, dmp1:%s dmq1:%s iqmp:%s\n", rsa_t->flags, rsa_t->dmp1 == NULL ? "null": "notnull",
+            rsa_t->dmq1 == NULL ? "null" : "notnull", rsa_t->iqmp == NULL ? "null" : "notnull");
+    printf("n==n:%d p==p:%d dmp1:%d dmq1:%d iqmp:%d\n", BN_cmp(rsa->n, rsa_t->n), BN_cmp(rsa->p, rsa_t->p), BN_cmp(rsa->dmp1, rsa_t->dmp1),
+            BN_cmp(rsa->dmq1, rsa_t->dmq1), BN_cmp(rsa->iqmp, rsa_t->iqmp));
+    printf("p:q:%d\n", BN_cmp(rsa->p, rsa->q));
 	/* do the decrypt */
 	if ((rsa->flags & RSA_FLAG_EXT_PKEY) ||
 	    (rsa->p != NULL && rsa->q != NULL && rsa->dmp1 != NULL &&
