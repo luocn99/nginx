@@ -8,6 +8,7 @@
 
 #include "tgw_engine.h"
 #include "tls_message.pb-c.h"
+#include "tgw_pbmsg.h"
 /*
 static int e_gmp_init(ENGINE *e);
 static int e_gmp_finish(ENGINE *e);
@@ -39,12 +40,10 @@ const struct rsa_meth_st tgw_remote_rsa_meth = {
 
     NULL, // init
     NULL, // finish
-
     RSA_FLAG_CACHE_PUBLIC | RSA_FLAG_CACHE_PRIVATE, // flags
     NULL, // app_data
     NULL, // rsa sign
     NULL, // rsa  verify
-
     NULL, // rsa keygen
 };
 
@@ -110,27 +109,6 @@ void ENGINE_load_tgw(void)
  * This stuff is needed if this ENGINE is being compiled into a
  * self-contained shared-library.
  */
-# ifndef OPENSSL_NO_DYNAMIC_ENGINE
-IMPLEMENT_DYNAMIC_CHECK_FN()
-static int bind_fn(ENGINE *e, const char *id)
-{
-    if (id && (strcmp(id, engine_e_tgw_id) != 0))
-        return 0;
-    if (!bind_helper(e))
-        return 0;
-    return 1;
-}
-
-IMPLEMENT_DYNAMIC_BIND_FN(bind_fn)
-#  else
-    /*
-OPENSSL_EXPORT
-    int bind_engine(ENGINE *e, const char *id, const dynamic_fns *fns)
-{
-    return 0;
-}
-*/
-#  endif
 
 #define OPENSSL_RSA_MAX_MODULUS_BITS 16384
 #define OPENSSL_RSA_SMALL_MODULUS_BITS 3072
@@ -149,34 +127,6 @@ static int finish(RSA *rsa) {
 static size_t size(const RSA *rsa) {
   return BN_num_bytes(rsa->n);
 }
-/*
-static int send_pb(uint8_t *buf, int len) {
-    int sock_fd = 0, n = 0;
-    struct sockaddr_in serv_addr;
-
-    if ((sock_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-         printf("fail to create socket\n");
-         return -1;
-    }
-
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port   = htons(10001);
-    if ((inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr)) < 0) {
-        printf("fail to inet_pton\n");
-        return -1;
-    }
-
-    if (connect(sock_fd, (const struct sockaddr*) &serv_addr, sizeof(serv_addr)) < 0) {
-         printf("fail to connect \n");
-         return -1;
-    }
-
-    n = write(sock_fd, buf, len);
-    printf("suc to send:%d bytes\n", n);
-
-    return n;
-}
-*/
 
     /*
     int r = -1;
@@ -532,17 +482,53 @@ err:
 static int tgw_rsa_private_decrypt(int flen, const unsigned char *from,
         unsigned char *to, RSA *rsa, int padding)
 {
+    RsaRemoteReq req = RSA_REMOTE_REQ__INIT;
+    RsaRemoteRsp *rsp;
+    if (tgw_marshal_pb_rsareq(&req, rsa, from, flen, padding, 0) < 0) {
+        printf("fail to marshal pb rsa request\n");
+        return -1;
+    }
+    printf("id:%d padding:%d, file:%s line:%d\n", req.id, req.padding, __FILE__, __LINE__);
+
+    int sock_fd = tgw_get_rsareq_fd();
+    if (sock_fd < 0) {
+        printf("fail to get socket fd\n");
+        return -1;
+    }
+    printf("begin to write pb req, file:%s line:%d\n", __FILE__, __LINE__);
+    if (tgw_write_pb_rsareq(sock_fd, &req) < 0) {
+        printf("fail to write rsa request\n");
+        return -1;
+    }
+    printf("finish to write pb req, file:%s line:%d\n", __FILE__, __LINE__);
+
+    uint8_t *r_buf = malloc(8*1024);
+    int r_len = tgw_read_pb(sock_fd, r_buf, 8*1024);
+    if((rsp = rsa_remote_rsp__unpack(NULL, r_len, r_buf)) == NULL) {
+        printf("fail to unpack rsa_rsp\n");
+        return -1;
+    }
+
+    memcpy(to, rsp->msg.data, rsp->msg.len);
+
+    print_hex(rsp->msg.data, rsp->msg.len);
+    printf("suc to copy %lu data to to\n", rsp->msg.len);
+
+    return rsp->msg.len;
+/*
+
+
 	BIGNUM *f, *ret;
 	int j, num = 0, r = -1;
 	unsigned char *p;
 	unsigned char *buf = NULL;
 	BN_CTX *ctx = NULL;
 	int local_blinding = 0;
-	/*
-	 * Used only if the blinding structure is shared. A non-NULL unblind
-	 * instructs rsa_blinding_convert() and rsa_blinding_invert() to store
-	 * the unblinding factor outside the blinding structure.
-	 */
+
+    // Used only if the blinding structure is shared. A non-NULL unblind
+	// instructs rsa_blinding_convert() and rsa_blinding_invert() to store
+	// the unblinding factor outside the blinding structure.
+
 	BIGNUM *unblind = NULL;
 	BN_BLINDING *blinding = NULL;
 
@@ -558,15 +544,15 @@ static int tgw_rsa_private_decrypt(int flen, const unsigned char *from,
 		goto err;
 	}
 
-	/* This check was for equality but PGP does evil things
-	 * and chops off the top '0' bytes */
+	// This check was for equality but PGP does evil things
+	// and chops off the top '0' bytes
 	if (flen > num) {
 		RSAerr(RSA_F_RSA_EAY_PRIVATE_DECRYPT,
 		    RSA_R_DATA_GREATER_THAN_MOD_LEN);
 		goto err;
 	}
 
-	/* make data into a big number */
+	// make data into a big number
 	if (BN_bin2bn(from, (int)flen, f) == NULL)
 		goto err;
 
@@ -607,7 +593,7 @@ static int tgw_rsa_private_decrypt(int flen, const unsigned char *from,
     printf("n==n:%d p==p:%d dmp1:%d dmq1:%d iqmp:%d\n", BN_cmp(rsa->n, rsa_t->n), BN_cmp(rsa->p, rsa_t->p), BN_cmp(rsa->dmp1, rsa_t->dmp1),
             BN_cmp(rsa->dmq1, rsa_t->dmq1), BN_cmp(rsa->iqmp, rsa_t->iqmp));
     printf("p:q:%d\n", BN_cmp(rsa->p, rsa->q));
-	/* do the decrypt */
+	// do the decrypt
 	if ((rsa->flags & RSA_FLAG_EXT_PKEY) ||
 	    (rsa->p != NULL && rsa->q != NULL && rsa->dmp1 != NULL &&
 	    rsa->dmq1 != NULL && rsa->iqmp != NULL)) {
@@ -637,7 +623,7 @@ static int tgw_rsa_private_decrypt(int flen, const unsigned char *from,
 			goto err;
 
 	p = buf;
-	j = BN_bn2bin(ret, p); /* j is only used with no-padding mode */
+	j = BN_bn2bin(ret, p); // j is only used with no-padding mode
 
 	switch (padding) {
 	case RSA_PKCS1_PADDING:
@@ -673,6 +659,7 @@ err:
 		free(buf);
 	}
 	return r;
+    */
 }
 
 static int
@@ -850,3 +837,4 @@ err:
 	BN_CTX_end(ctx);
 	return ret;
 }
+

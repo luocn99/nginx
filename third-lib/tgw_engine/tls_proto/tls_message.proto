@@ -6,18 +6,23 @@ message tls_message {
     string encryt_txt   = 4;
 }
 
-message rsa_dec_req {
+message rsa_remote_req {
     int32   id = 1;
     int32   version = 2;
     int32   type    = 3;
-    int32   out_len = 4;
-    int32   in_len  = 5;
-    int32   max_out = 6;
-    int32   padding = 7;
+    int32   from_len  = 5;
+    int32   padding   = 7;
     bytes   public_key  = 10;
     bytes   private_key = 11;
+    bytes   msg         = 12;
     int32   private_key_len = 15;
-    bytes   encrypt_txt = 12;
-    bytes   decrypt_txt = 13;
+}
+
+message rsa_remote_rsp {
+    int32   id = 1;
+    int32   version = 2;
+    int32   type    = 3;
+    int32   padding = 7;
+    bytes   msg     = 12;
 }
 

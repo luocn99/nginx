@@ -16,7 +16,8 @@ PROTOBUF_C__BEGIN_DECLS
 
 
 typedef struct _TlsMessage TlsMessage;
-typedef struct _RsaDecReq RsaDecReq;
+typedef struct _RsaRemoteReq RsaRemoteReq;
+typedef struct _RsaRemoteRsp RsaRemoteRsp;
 
 
 /* --- enums --- */
@@ -39,7 +40,7 @@ struct  _TlsMessage
     , 0,0, 0,0, NULL, NULL }
 
 
-struct  _RsaDecReq
+struct  _RsaRemoteReq
 {
   ProtobufCMessage base;
   protobuf_c_boolean has_id;
@@ -48,28 +49,41 @@ struct  _RsaDecReq
   int32_t version;
   protobuf_c_boolean has_type;
   int32_t type;
-  protobuf_c_boolean has_out_len;
-  int32_t out_len;
-  protobuf_c_boolean has_in_len;
-  int32_t in_len;
-  protobuf_c_boolean has_max_out;
-  int32_t max_out;
+  protobuf_c_boolean has_from_len;
+  int32_t from_len;
   protobuf_c_boolean has_padding;
   int32_t padding;
   protobuf_c_boolean has_public_key;
   ProtobufCBinaryData public_key;
   protobuf_c_boolean has_private_key;
   ProtobufCBinaryData private_key;
+  protobuf_c_boolean has_msg;
+  ProtobufCBinaryData msg;
   protobuf_c_boolean has_private_key_len;
   int32_t private_key_len;
-  protobuf_c_boolean has_encrypt_txt;
-  ProtobufCBinaryData encrypt_txt;
-  protobuf_c_boolean has_decrypt_txt;
-  ProtobufCBinaryData decrypt_txt;
 };
-#define RSA_DEC_REQ__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&rsa_dec_req__descriptor) \
-    , 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,{0,NULL}, 0,{0,NULL}, 0,0, 0,{0,NULL}, 0,{0,NULL} }
+#define RSA_REMOTE_REQ__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&rsa_remote_req__descriptor) \
+    , 0,0, 0,0, 0,0, 0,0, 0,0, 0,{0,NULL}, 0,{0,NULL}, 0,{0,NULL}, 0,0 }
+
+
+struct  _RsaRemoteRsp
+{
+  ProtobufCMessage base;
+  protobuf_c_boolean has_id;
+  int32_t id;
+  protobuf_c_boolean has_version;
+  int32_t version;
+  protobuf_c_boolean has_type;
+  int32_t type;
+  protobuf_c_boolean has_padding;
+  int32_t padding;
+  protobuf_c_boolean has_msg;
+  ProtobufCBinaryData msg;
+};
+#define RSA_REMOTE_RSP__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&rsa_remote_rsp__descriptor) \
+    , 0,0, 0,0, 0,0, 0,0, 0,{0,NULL} }
 
 
 /* TlsMessage methods */
@@ -91,32 +105,54 @@ TlsMessage *
 void   tls_message__free_unpacked
                      (TlsMessage *message,
                       ProtobufCAllocator *allocator);
-/* RsaDecReq methods */
-void   rsa_dec_req__init
-                     (RsaDecReq         *message);
-size_t rsa_dec_req__get_packed_size
-                     (const RsaDecReq   *message);
-size_t rsa_dec_req__pack
-                     (const RsaDecReq   *message,
+/* RsaRemoteReq methods */
+void   rsa_remote_req__init
+                     (RsaRemoteReq         *message);
+size_t rsa_remote_req__get_packed_size
+                     (const RsaRemoteReq   *message);
+size_t rsa_remote_req__pack
+                     (const RsaRemoteReq   *message,
                       uint8_t             *out);
-size_t rsa_dec_req__pack_to_buffer
-                     (const RsaDecReq   *message,
+size_t rsa_remote_req__pack_to_buffer
+                     (const RsaRemoteReq   *message,
                       ProtobufCBuffer     *buffer);
-RsaDecReq *
-       rsa_dec_req__unpack
+RsaRemoteReq *
+       rsa_remote_req__unpack
                      (ProtobufCAllocator  *allocator,
                       size_t               len,
                       const uint8_t       *data);
-void   rsa_dec_req__free_unpacked
-                     (RsaDecReq *message,
+void   rsa_remote_req__free_unpacked
+                     (RsaRemoteReq *message,
+                      ProtobufCAllocator *allocator);
+/* RsaRemoteRsp methods */
+void   rsa_remote_rsp__init
+                     (RsaRemoteRsp         *message);
+size_t rsa_remote_rsp__get_packed_size
+                     (const RsaRemoteRsp   *message);
+size_t rsa_remote_rsp__pack
+                     (const RsaRemoteRsp   *message,
+                      uint8_t             *out);
+size_t rsa_remote_rsp__pack_to_buffer
+                     (const RsaRemoteRsp   *message,
+                      ProtobufCBuffer     *buffer);
+RsaRemoteRsp *
+       rsa_remote_rsp__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   rsa_remote_rsp__free_unpacked
+                     (RsaRemoteRsp *message,
                       ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*TlsMessage_Closure)
                  (const TlsMessage *message,
                   void *closure_data);
-typedef void (*RsaDecReq_Closure)
-                 (const RsaDecReq *message,
+typedef void (*RsaRemoteReq_Closure)
+                 (const RsaRemoteReq *message,
+                  void *closure_data);
+typedef void (*RsaRemoteRsp_Closure)
+                 (const RsaRemoteRsp *message,
                   void *closure_data);
 
 /* --- services --- */
@@ -125,7 +161,8 @@ typedef void (*RsaDecReq_Closure)
 /* --- descriptors --- */
 
 extern const ProtobufCMessageDescriptor tls_message__descriptor;
-extern const ProtobufCMessageDescriptor rsa_dec_req__descriptor;
+extern const ProtobufCMessageDescriptor rsa_remote_req__descriptor;
+extern const ProtobufCMessageDescriptor rsa_remote_rsp__descriptor;
 
 PROTOBUF_C__END_DECLS
 

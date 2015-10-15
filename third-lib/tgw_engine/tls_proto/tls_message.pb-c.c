@@ -50,47 +50,90 @@ void   tls_message__free_unpacked
   assert(message->base.descriptor == &tls_message__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void   rsa_dec_req__init
-                     (RsaDecReq         *message)
+void   rsa_remote_req__init
+                     (RsaRemoteReq         *message)
 {
-  static RsaDecReq init_value = RSA_DEC_REQ__INIT;
+  static RsaRemoteReq init_value = RSA_REMOTE_REQ__INIT;
   *message = init_value;
 }
-size_t rsa_dec_req__get_packed_size
-                     (const RsaDecReq *message)
+size_t rsa_remote_req__get_packed_size
+                     (const RsaRemoteReq *message)
 {
-  assert(message->base.descriptor == &rsa_dec_req__descriptor);
+  assert(message->base.descriptor == &rsa_remote_req__descriptor);
   return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
 }
-size_t rsa_dec_req__pack
-                     (const RsaDecReq *message,
+size_t rsa_remote_req__pack
+                     (const RsaRemoteReq *message,
                       uint8_t       *out)
 {
-  assert(message->base.descriptor == &rsa_dec_req__descriptor);
+  assert(message->base.descriptor == &rsa_remote_req__descriptor);
   return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
 }
-size_t rsa_dec_req__pack_to_buffer
-                     (const RsaDecReq *message,
+size_t rsa_remote_req__pack_to_buffer
+                     (const RsaRemoteReq *message,
                       ProtobufCBuffer *buffer)
 {
-  assert(message->base.descriptor == &rsa_dec_req__descriptor);
+  assert(message->base.descriptor == &rsa_remote_req__descriptor);
   return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
 }
-RsaDecReq *
-       rsa_dec_req__unpack
+RsaRemoteReq *
+       rsa_remote_req__unpack
                      (ProtobufCAllocator  *allocator,
                       size_t               len,
                       const uint8_t       *data)
 {
-  return (RsaDecReq *)
-     protobuf_c_message_unpack (&rsa_dec_req__descriptor,
+  return (RsaRemoteReq *)
+     protobuf_c_message_unpack (&rsa_remote_req__descriptor,
                                 allocator, len, data);
 }
-void   rsa_dec_req__free_unpacked
-                     (RsaDecReq *message,
+void   rsa_remote_req__free_unpacked
+                     (RsaRemoteReq *message,
                       ProtobufCAllocator *allocator)
 {
-  assert(message->base.descriptor == &rsa_dec_req__descriptor);
+  assert(message->base.descriptor == &rsa_remote_req__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   rsa_remote_rsp__init
+                     (RsaRemoteRsp         *message)
+{
+  static RsaRemoteRsp init_value = RSA_REMOTE_RSP__INIT;
+  *message = init_value;
+}
+size_t rsa_remote_rsp__get_packed_size
+                     (const RsaRemoteRsp *message)
+{
+  assert(message->base.descriptor == &rsa_remote_rsp__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t rsa_remote_rsp__pack
+                     (const RsaRemoteRsp *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &rsa_remote_rsp__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t rsa_remote_rsp__pack_to_buffer
+                     (const RsaRemoteRsp *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &rsa_remote_rsp__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+RsaRemoteRsp *
+       rsa_remote_rsp__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (RsaRemoteRsp *)
+     protobuf_c_message_unpack (&rsa_remote_rsp__descriptor,
+                                allocator, len, data);
+}
+void   rsa_remote_rsp__free_unpacked
+                     (RsaRemoteRsp *message,
+                      ProtobufCAllocator *allocator)
+{
+  assert(message->base.descriptor == &rsa_remote_rsp__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 static const ProtobufCFieldDescriptor tls_message__field_descriptors[4] =
@@ -170,15 +213,15 @@ const ProtobufCMessageDescriptor tls_message__descriptor =
   (ProtobufCMessageInit) tls_message__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor rsa_dec_req__field_descriptors[12] =
+static const ProtobufCFieldDescriptor rsa_remote_req__field_descriptors[9] =
 {
   {
     "id",
     1,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_INT32,
-    offsetof(RsaDecReq, has_id),
-    offsetof(RsaDecReq, id),
+    offsetof(RsaRemoteReq, has_id),
+    offsetof(RsaRemoteReq, id),
     NULL,
     NULL,
     0,             /* flags */
@@ -189,8 +232,8 @@ static const ProtobufCFieldDescriptor rsa_dec_req__field_descriptors[12] =
     2,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_INT32,
-    offsetof(RsaDecReq, has_version),
-    offsetof(RsaDecReq, version),
+    offsetof(RsaRemoteReq, has_version),
+    offsetof(RsaRemoteReq, version),
     NULL,
     NULL,
     0,             /* flags */
@@ -201,44 +244,20 @@ static const ProtobufCFieldDescriptor rsa_dec_req__field_descriptors[12] =
     3,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_INT32,
-    offsetof(RsaDecReq, has_type),
-    offsetof(RsaDecReq, type),
+    offsetof(RsaRemoteReq, has_type),
+    offsetof(RsaRemoteReq, type),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "out_len",
-    4,
-    PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_INT32,
-    offsetof(RsaDecReq, has_out_len),
-    offsetof(RsaDecReq, out_len),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "in_len",
+    "from_len",
     5,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_INT32,
-    offsetof(RsaDecReq, has_in_len),
-    offsetof(RsaDecReq, in_len),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "max_out",
-    6,
-    PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_INT32,
-    offsetof(RsaDecReq, has_max_out),
-    offsetof(RsaDecReq, max_out),
+    offsetof(RsaRemoteReq, has_from_len),
+    offsetof(RsaRemoteReq, from_len),
     NULL,
     NULL,
     0,             /* flags */
@@ -249,8 +268,8 @@ static const ProtobufCFieldDescriptor rsa_dec_req__field_descriptors[12] =
     7,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_INT32,
-    offsetof(RsaDecReq, has_padding),
-    offsetof(RsaDecReq, padding),
+    offsetof(RsaRemoteReq, has_padding),
+    offsetof(RsaRemoteReq, padding),
     NULL,
     NULL,
     0,             /* flags */
@@ -261,8 +280,8 @@ static const ProtobufCFieldDescriptor rsa_dec_req__field_descriptors[12] =
     10,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_BYTES,
-    offsetof(RsaDecReq, has_public_key),
-    offsetof(RsaDecReq, public_key),
+    offsetof(RsaRemoteReq, has_public_key),
+    offsetof(RsaRemoteReq, public_key),
     NULL,
     NULL,
     0,             /* flags */
@@ -273,32 +292,20 @@ static const ProtobufCFieldDescriptor rsa_dec_req__field_descriptors[12] =
     11,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_BYTES,
-    offsetof(RsaDecReq, has_private_key),
-    offsetof(RsaDecReq, private_key),
+    offsetof(RsaRemoteReq, has_private_key),
+    offsetof(RsaRemoteReq, private_key),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "encrypt_txt",
+    "msg",
     12,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_BYTES,
-    offsetof(RsaDecReq, has_encrypt_txt),
-    offsetof(RsaDecReq, encrypt_txt),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "decrypt_txt",
-    13,
-    PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_BYTES,
-    offsetof(RsaDecReq, has_decrypt_txt),
-    offsetof(RsaDecReq, decrypt_txt),
+    offsetof(RsaRemoteReq, has_msg),
+    offsetof(RsaRemoteReq, msg),
     NULL,
     NULL,
     0,             /* flags */
@@ -309,47 +316,138 @@ static const ProtobufCFieldDescriptor rsa_dec_req__field_descriptors[12] =
     15,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_INT32,
-    offsetof(RsaDecReq, has_private_key_len),
-    offsetof(RsaDecReq, private_key_len),
+    offsetof(RsaRemoteReq, has_private_key_len),
+    offsetof(RsaRemoteReq, private_key_len),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
-static const unsigned rsa_dec_req__field_indices_by_name[] = {
-  10,   /* field[10] = decrypt_txt */
-  9,   /* field[9] = encrypt_txt */
+static const unsigned rsa_remote_req__field_indices_by_name[] = {
+  3,   /* field[3] = from_len */
   0,   /* field[0] = id */
-  4,   /* field[4] = in_len */
-  5,   /* field[5] = max_out */
-  3,   /* field[3] = out_len */
-  6,   /* field[6] = padding */
-  8,   /* field[8] = private_key */
-  11,   /* field[11] = private_key_len */
-  7,   /* field[7] = public_key */
+  7,   /* field[7] = msg */
+  4,   /* field[4] = padding */
+  6,   /* field[6] = private_key */
+  8,   /* field[8] = private_key_len */
+  5,   /* field[5] = public_key */
   2,   /* field[2] = type */
   1,   /* field[1] = version */
 };
-static const ProtobufCIntRange rsa_dec_req__number_ranges[3 + 1] =
+static const ProtobufCIntRange rsa_remote_req__number_ranges[5 + 1] =
 {
   { 1, 0 },
-  { 10, 7 },
-  { 15, 11 },
-  { 0, 12 }
+  { 5, 3 },
+  { 7, 4 },
+  { 10, 5 },
+  { 15, 8 },
+  { 0, 9 }
 };
-const ProtobufCMessageDescriptor rsa_dec_req__descriptor =
+const ProtobufCMessageDescriptor rsa_remote_req__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "rsa_dec_req",
-  "RsaDecReq",
-  "RsaDecReq",
+  "rsa_remote_req",
+  "RsaRemoteReq",
+  "RsaRemoteReq",
   "",
-  sizeof(RsaDecReq),
-  12,
-  rsa_dec_req__field_descriptors,
-  rsa_dec_req__field_indices_by_name,
-  3,  rsa_dec_req__number_ranges,
-  (ProtobufCMessageInit) rsa_dec_req__init,
+  sizeof(RsaRemoteReq),
+  9,
+  rsa_remote_req__field_descriptors,
+  rsa_remote_req__field_indices_by_name,
+  5,  rsa_remote_req__number_ranges,
+  (ProtobufCMessageInit) rsa_remote_req__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor rsa_remote_rsp__field_descriptors[5] =
+{
+  {
+    "id",
+    1,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(RsaRemoteRsp, has_id),
+    offsetof(RsaRemoteRsp, id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "version",
+    2,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(RsaRemoteRsp, has_version),
+    offsetof(RsaRemoteRsp, version),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "type",
+    3,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(RsaRemoteRsp, has_type),
+    offsetof(RsaRemoteRsp, type),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "padding",
+    7,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(RsaRemoteRsp, has_padding),
+    offsetof(RsaRemoteRsp, padding),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "msg",
+    12,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_BYTES,
+    offsetof(RsaRemoteRsp, has_msg),
+    offsetof(RsaRemoteRsp, msg),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned rsa_remote_rsp__field_indices_by_name[] = {
+  0,   /* field[0] = id */
+  4,   /* field[4] = msg */
+  3,   /* field[3] = padding */
+  2,   /* field[2] = type */
+  1,   /* field[1] = version */
+};
+static const ProtobufCIntRange rsa_remote_rsp__number_ranges[3 + 1] =
+{
+  { 1, 0 },
+  { 7, 3 },
+  { 12, 4 },
+  { 0, 5 }
+};
+const ProtobufCMessageDescriptor rsa_remote_rsp__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "rsa_remote_rsp",
+  "RsaRemoteRsp",
+  "RsaRemoteRsp",
+  "",
+  sizeof(RsaRemoteRsp),
+  5,
+  rsa_remote_rsp__field_descriptors,
+  rsa_remote_rsp__field_indices_by_name,
+  3,  rsa_remote_rsp__number_ranges,
+  (ProtobufCMessageInit) rsa_remote_rsp__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
