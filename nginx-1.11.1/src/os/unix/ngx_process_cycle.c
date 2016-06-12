@@ -40,6 +40,7 @@ sig_atomic_t  ngx_quit;
 sig_atomic_t  ngx_debug_quit;
 ngx_uint_t    ngx_exiting;
 sig_atomic_t  ngx_reconfigure;
+sig_atomic_t  ngx_stgw_reconfigure;
 sig_atomic_t  ngx_reopen;
 
 sig_atomic_t  ngx_change_binary;
@@ -90,6 +91,7 @@ ngx_master_process_cycle(ngx_cycle_t *cycle)
     sigaddset(&set, SIGIO);
     sigaddset(&set, SIGINT);
     sigaddset(&set, ngx_signal_value(NGX_RECONFIGURE_SIGNAL));
+    sigaddset(&set, ngx_signal_value(NGX_SRECONFIGURE_SIGNAL));
     sigaddset(&set, ngx_signal_value(NGX_REOPEN_SIGNAL));
     sigaddset(&set, ngx_signal_value(NGX_NOACCEPT_SIGNAL));
     sigaddset(&set, ngx_signal_value(NGX_TERMINATE_SIGNAL));
@@ -250,6 +252,11 @@ ngx_master_process_cycle(ngx_cycle_t *cycle)
             live = 1;
             ngx_signal_worker_processes(cycle,
                                         ngx_signal_value(NGX_SHUTDOWN_SIGNAL));
+        }
+
+        if (ngx_stgw_reconfig) {
+
+            //
         }
 
         if (ngx_restart) {

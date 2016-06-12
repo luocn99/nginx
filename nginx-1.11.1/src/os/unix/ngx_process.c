@@ -42,6 +42,11 @@ ngx_signal_t  signals[] = {
       "reload",
       ngx_signal_handler },
 
+    { ngx_signal_value(NGX_SRECONFIGURE_SIGNAL),
+      "SIG" ngx_value(NGX_SRECONFIGURE_SIGNAL),
+      "sreload",
+      ngx_signal_handler },
+
     { ngx_signal_value(NGX_REOPEN_SIGNAL),
       "SIG" ngx_value(NGX_REOPEN_SIGNAL),
       "reopen",
@@ -355,6 +360,11 @@ ngx_signal_handler(int signo)
         case ngx_signal_value(NGX_RECONFIGURE_SIGNAL):
             ngx_reconfigure = 1;
             action = ", reconfiguring";
+            break;
+
+        case ngx_signal_value(NGX_SRECONFIGURE_SIGNAL):
+            ngx_sreconfigure = 1;
+            action = ", stgw reconfiguring";
             break;
 
         case ngx_signal_value(NGX_REOPEN_SIGNAL):
