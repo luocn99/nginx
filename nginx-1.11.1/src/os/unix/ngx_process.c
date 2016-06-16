@@ -41,9 +41,8 @@ ngx_signal_t  signals[] = {
       "SIG" ngx_value(NGX_RECONFIGURE_SIGNAL),
       "reload",
       ngx_signal_handler },
-
-    { ngx_signal_value(NGX_SRECONFIGURE_SIGNAL),
-      "SIG" ngx_value(NGX_SRECONFIGURE_SIGNAL),
+    { 50,
+      "SIGRTMIN + 10",
       "sreload",
       ngx_signal_handler },
 
@@ -362,8 +361,9 @@ ngx_signal_handler(int signo)
             action = ", reconfiguring";
             break;
 
-        case ngx_signal_value(NGX_SRECONFIGURE_SIGNAL):
-            ngx_sreconfigure = 1;
+        //case ngx_signal_value(NGX_SRECONFIGURE_SIGNAL):
+        //case SIGRTMIN + 10:
+            ngx_stgw_reconfigure = 1;
             action = ", stgw reconfiguring";
             break;
 
