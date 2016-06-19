@@ -4,7 +4,10 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALL_INCS	objs/Makefile	/^ALL_INCS = -I src\/core \\$/;"	m
 AO_REQUIRE_CAS	src/os/unix/ngx_atomic.h	18;"	d
+CC	objs/Makefile	/^CC =	cc$/;"	m
+CFLAGS	objs/Makefile	/^CFLAGS =  -pipe  -O -W -Wall -Wpointer-arith -Wno-unused-parameter -Werror -g $/;"	m
 CLOCK_REALTIME	src/event/modules/ngx_eventport_module.c	19;"	d	file:
 CMSG_DATA	src/os/unix/ngx_freebsd_config.h	67;"	d
 CMSG_DATA	src/os/unix/ngx_freebsd_config.h	68;"	d
@@ -18,6 +21,9 @@ CMSG_SPACE	src/os/unix/ngx_freebsd_config.h	61;"	d
 CMSG_SPACE	src/os/unix/ngx_freebsd_config.h	62;"	d
 CMSG_SPACE	src/os/unix/ngx_posix_config.h	156;"	d
 CMSG_SPACE	src/os/unix/ngx_posix_config.h	157;"	d
+CORE_DEPS	objs/Makefile	/^CORE_DEPS = src\/core\/nginx.h \\$/;"	m
+CORE_INCS	objs/Makefile	/^CORE_INCS = -I src\/core \\$/;"	m
+CPP	objs/Makefile	/^CPP =	cc -E$/;"	m
 CR	src/core/ngx_core.h	96;"	d
 CRLF	src/core/ngx_core.h	97;"	d
 DECLINED	src/http/modules/perl/nginx.pm	/^use constant DECLINED                       => -5;$/;"	c
@@ -53,9 +59,11 @@ HTTP_BAD_GATEWAY	src/http/modules/perl/nginx.pm	/^use constant HTTP_BAD_GATEWAY 
 HTTP_BAD_REQUEST	src/http/modules/perl/nginx.pm	/^use constant HTTP_BAD_REQUEST               => 400;$/;"	c
 HTTP_CONFLICT	src/http/modules/perl/nginx.pm	/^use constant HTTP_CONFLICT                  => 409;$/;"	c
 HTTP_CREATED	src/http/modules/perl/nginx.pm	/^use constant HTTP_CREATED                   => 201;$/;"	c
+HTTP_DEPS	objs/Makefile	/^HTTP_DEPS = src\/http\/ngx_http.h \\$/;"	m
 HTTP_FORBIDDEN	src/http/modules/perl/nginx.pm	/^use constant HTTP_FORBIDDEN                 => 403;$/;"	c
 HTTP_GATEWAY_TIME_OUT	src/http/modules/perl/nginx.pm	/^use constant HTTP_GATEWAY_TIME_OUT          => 504;$/;"	c
 HTTP_GONE	src/http/modules/perl/nginx.pm	/^use constant HTTP_GONE                      => 410;$/;"	c
+HTTP_INCS	objs/Makefile	/^HTTP_INCS = -I src\/http \\$/;"	m
 HTTP_INSUFFICIENT_STORAGE	src/http/modules/perl/nginx.pm	/^use constant HTTP_INSUFFICIENT_STORAGE      => 507;$/;"	c
 HTTP_INTERNAL_SERVER_ERROR	src/http/modules/perl/nginx.pm	/^use constant HTTP_INTERNAL_SERVER_ERROR     => 500;$/;"	c
 HTTP_LENGTH_REQUIRED	src/http/modules/perl/nginx.pm	/^use constant HTTP_LENGTH_REQUIRED           => 411;$/;"	c
@@ -82,11 +90,12 @@ HTTP_TEMPORARY_REDIRECT	src/http/modules/perl/nginx.pm	/^use constant HTTP_TEMPO
 HTTP_UNAUTHORIZED	src/http/modules/perl/nginx.pm	/^use constant HTTP_UNAUTHORIZED              => 401;$/;"	c
 HTTP_UNSUPPORTED_MEDIA_TYPE	src/http/modules/perl/nginx.pm	/^use constant HTTP_UNSUPPORTED_MEDIA_TYPE    => 415;$/;"	c
 I	src/core/ngx_md5.c	129;"	d	file:
-INADDR_NONE	src/core/ngx_config.h	118;"	d
+INADDR_NONE	src/core/ngx_config.h	119;"	d
 IOV_MAX	src/os/unix/ngx_darwin_config.h	55;"	d
 IOV_MAX	src/os/unix/ngx_freebsd_config.h	106;"	d
 IOV_MAX	src/os/unix/ngx_posix_config.h	104;"	d
 LF	src/core/ngx_core.h	95;"	d
+LINK	objs/Makefile	/^LINK =	$(CC)$/;"	m
 NGINX_VAR	src/core/nginx.h	22;"	d
 NGINX_VER	src/core/nginx.h	14;"	d
 NGINX_VERSION	src/core/nginx.h	13;"	d
@@ -94,7 +103,7 @@ NGINX_VER_BUILD	src/core/nginx.h	17;"	d
 NGINX_VER_BUILD	src/core/nginx.h	19;"	d
 NGX_ABORT	src/core/ngx_core.h	42;"	d
 NGX_AGAIN	src/core/ngx_core.h	38;"	d
-NGX_ALIGNMENT	src/core/ngx_config.h	97;"	d
+NGX_ALIGNMENT	src/core/ngx_config.h	98;"	d
 NGX_ALIGNMENT	src/os/unix/ngx_solaris_config.h	60;"	d
 NGX_ANY_CONF	src/core/ngx_conf_file.h	52;"	d
 NGX_ATOMIC_T_LEN	src/os/unix/ngx_atomic.h	101;"	d
@@ -118,8 +127,8 @@ NGX_CASA	src/os/unix/ngx_gcc_atomic_sparc64.h	29;"	d
 NGX_CASA	src/os/unix/ngx_sunpro_atomic_sparc64.h	11;"	d
 NGX_CASA	src/os/unix/ngx_sunpro_atomic_sparc64.h	9;"	d
 NGX_CHAIN_ERROR	src/core/ngx_buf.h	131;"	d
-NGX_CHANGEBIN_SIGNAL	src/core/ngx_config.h	67;"	d
-NGX_CHANGEBIN_SIGNAL	src/core/ngx_config.h	70;"	d
+NGX_CHANGEBIN_SIGNAL	src/core/ngx_config.h	68;"	d
+NGX_CHANGEBIN_SIGNAL	src/core/ngx_config.h	71;"	d
 NGX_CLEAR_EVENT	src/event/ngx_event.h	347;"	d
 NGX_CLEAR_EVENT	src/event/ngx_event.h	369;"	d
 NGX_CLEAR_EVENT	src/event/ngx_event.h	404;"	d
@@ -131,6 +140,8 @@ NGX_CMD_OPEN_CHANNEL	src/os/unix/ngx_process_cycle.h	16;"	d
 NGX_CMD_QUIT	src/os/unix/ngx_process_cycle.h	18;"	d
 NGX_CMD_REOPEN	src/os/unix/ngx_process_cycle.h	20;"	d
 NGX_CMD_TERMINATE	src/os/unix/ngx_process_cycle.h	19;"	d
+NGX_COMPILER	objs/ngx_auto_config.h	4;"	d
+NGX_CONFIGURE	objs/ngx_auto_config.h	1;"	d
 NGX_CONF_1MORE	src/core/ngx_conf_file.h	46;"	d
 NGX_CONF_2MORE	src/core/ngx_conf_file.h	47;"	d
 NGX_CONF_ANY	src/core/ngx_conf_file.h	45;"	d
@@ -165,6 +176,8 @@ NGX_CONF_UNSET_PTR	src/core/ngx_conf_file.h	58;"	d
 NGX_CONF_UNSET_SIZE	src/core/ngx_conf_file.h	59;"	d
 NGX_CONF_UNSET_UINT	src/core/ngx_conf_file.h	57;"	d
 NGX_CORE_MODULE	src/core/ngx_conf_file.h	70;"	d
+NGX_CPU_CACHE_LINE	objs/ngx_auto_config.h	79;"	d
+NGX_CRYPT	objs/ngx_auto_config.h	337;"	d
 NGX_CYCLE_POOL_SIZE	src/core/ngx_cycle.h	17;"	d
 NGX_DEBUG_POINTS_ABORT	src/core/ngx_cycle.h	22;"	d
 NGX_DEBUG_POINTS_STOP	src/core/ngx_cycle.h	21;"	d
@@ -273,6 +286,8 @@ NGX_HASH_LARGE_HSIZE	src/core/ngx_hash.h	69;"	d
 NGX_HASH_READONLY_KEY	src/core/ngx_hash.h	72;"	d
 NGX_HASH_SMALL	src/core/ngx_hash.h	65;"	d
 NGX_HASH_WILDCARD_KEY	src/core/ngx_hash.h	71;"	d
+NGX_HAVE_ACCEPT4	objs/ngx_auto_config.h	162;"	d
+NGX_HAVE_ALIGNED_DIRECTIO	objs/ngx_auto_config.h	97;"	d
 NGX_HAVE_ATOMIC_OPS	src/os/unix/ngx_atomic.h	134;"	d
 NGX_HAVE_ATOMIC_OPS	src/os/unix/ngx_atomic.h	158;"	d
 NGX_HAVE_ATOMIC_OPS	src/os/unix/ngx_atomic.h	175;"	d
@@ -284,25 +299,83 @@ NGX_HAVE_ATOMIC_OPS	src/os/unix/ngx_atomic.h	243;"	d
 NGX_HAVE_ATOMIC_OPS	src/os/unix/ngx_atomic.h	269;"	d
 NGX_HAVE_ATOMIC_OPS	src/os/unix/ngx_atomic.h	56;"	d
 NGX_HAVE_ATOMIC_OPS	src/os/unix/ngx_atomic.h	95;"	d
+NGX_HAVE_C99_VARIADIC_MACROS	objs/ngx_auto_config.h	14;"	d
 NGX_HAVE_CASELESS_FILESYSTEM	src/os/unix/ngx_darwin_config.h	86;"	d
 NGX_HAVE_CASELESS_FILESYSTEM	src/os/unix/ngx_files.h	57;"	d
+NGX_HAVE_CLEAR_EVENT	objs/ngx_auto_config.h	34;"	d
 NGX_HAVE_CPU_AFFINITY	src/os/unix/ngx_setaffinity.h	12;"	d
+NGX_HAVE_CRYPT_H	objs/ngx_auto_headers.h	34;"	d
 NGX_HAVE_DEBUG_MALLOC	src/os/unix/ngx_darwin_config.h	91;"	d
 NGX_HAVE_DEBUG_MALLOC	src/os/unix/ngx_freebsd_config.h	116;"	d
+NGX_HAVE_DEFERRED_ACCEPT	objs/ngx_auto_config.h	142;"	d
+NGX_HAVE_DLOPEN	objs/ngx_auto_config.h	112;"	d
+NGX_HAVE_D_TYPE	objs/ngx_auto_config.h	302;"	d
+NGX_HAVE_EPOLL	objs/ngx_auto_config.h	29;"	d
+NGX_HAVE_EPOLLRDHUP	objs/ngx_auto_config.h	39;"	d
+NGX_HAVE_EVENTFD	objs/ngx_auto_config.h	167;"	d
+NGX_HAVE_FIONBIO	objs/ngx_auto_config.h	292;"	d
+NGX_HAVE_GCC_ATOMIC	objs/ngx_auto_config.h	9;"	d
+NGX_HAVE_GCC_BSWAP64	objs/ngx_auto_config.h	24;"	d
+NGX_HAVE_GCC_VARIADIC_MACROS	objs/ngx_auto_config.h	19;"	d
+NGX_HAVE_GETADDRINFO	objs/ngx_auto_config.h	317;"	d
+NGX_HAVE_GMTOFF	objs/ngx_auto_config.h	297;"	d
+NGX_HAVE_GNU_CRYPT_R	objs/ngx_auto_config.h	69;"	d
 NGX_HAVE_INHERITED_NONBLOCK	src/os/unix/ngx_darwin_config.h	81;"	d
 NGX_HAVE_INHERITED_NONBLOCK	src/os/unix/ngx_freebsd_config.h	111;"	d
 NGX_HAVE_INHERITED_NONBLOCK	src/os/unix/ngx_linux_config.h	112;"	d
 NGX_HAVE_INHERITED_NONBLOCK	src/os/unix/ngx_solaris_config.h	95;"	d
+NGX_HAVE_INTTYPES_H	objs/ngx_auto_headers.h	9;"	d
+NGX_HAVE_IPV6_RECVPKTINFO	objs/ngx_auto_config.h	137;"	d
+NGX_HAVE_IP_PKTINFO	objs/ngx_auto_config.h	132;"	d
+NGX_HAVE_KEEPALIVE_TUNABLE	objs/ngx_auto_config.h	147;"	d
+NGX_HAVE_LIMITS_H	objs/ngx_auto_headers.h	14;"	d
+NGX_HAVE_LITTLE_ENDIAN	objs/ngx_auto_config.h	192;"	d
+NGX_HAVE_LOCALTIME_R	objs/ngx_auto_config.h	252;"	d
+NGX_HAVE_MAP_ANON	objs/ngx_auto_config.h	267;"	d
+NGX_HAVE_MAP_DEVZERO	objs/ngx_auto_config.h	272;"	d
 NGX_HAVE_MAX_PATH	src/os/unix/ngx_files.h	206;"	d
+NGX_HAVE_MEMALIGN	objs/ngx_auto_config.h	262;"	d
+NGX_HAVE_MSGHDR_MSG_CONTROL	objs/ngx_auto_config.h	287;"	d
+NGX_HAVE_NONALIGNED	objs/ngx_auto_config.h	74;"	d
+NGX_HAVE_OPENAT	objs/ngx_auto_config.h	312;"	d
 NGX_HAVE_OS_SPECIFIC_INIT	src/os/unix/ngx_darwin_config.h	90;"	d
 NGX_HAVE_OS_SPECIFIC_INIT	src/os/unix/ngx_freebsd_config.h	115;"	d
 NGX_HAVE_OS_SPECIFIC_INIT	src/os/unix/ngx_linux_config.h	116;"	d
 NGX_HAVE_OS_SPECIFIC_INIT	src/os/unix/ngx_solaris_config.h	105;"	d
+NGX_HAVE_O_DIRECT	objs/ngx_auto_config.h	92;"	d
+NGX_HAVE_O_PATH	objs/ngx_auto_config.h	44;"	d
+NGX_HAVE_POSIX_FADVISE	objs/ngx_auto_config.h	87;"	d
+NGX_HAVE_POSIX_MEMALIGN	objs/ngx_auto_config.h	257;"	d
+NGX_HAVE_POSIX_SEM	objs/ngx_auto_config.h	282;"	d
+NGX_HAVE_PREAD	objs/ngx_auto_config.h	232;"	d
+NGX_HAVE_PR_SET_DUMPABLE	objs/ngx_auto_config.h	59;"	d
+NGX_HAVE_PWRITE	objs/ngx_auto_config.h	237;"	d
+NGX_HAVE_PWRITEV	objs/ngx_auto_config.h	242;"	d
 NGX_HAVE_READ_AHEAD	src/os/unix/ngx_files.h	306;"	d
 NGX_HAVE_READ_AHEAD	src/os/unix/ngx_files.h	313;"	d
+NGX_HAVE_REUSEPORT	objs/ngx_auto_config.h	122;"	d
+NGX_HAVE_SCHED_SETAFFINITY	objs/ngx_auto_config.h	64;"	d
+NGX_HAVE_SCHED_YIELD	objs/ngx_auto_config.h	117;"	d
+NGX_HAVE_SC_NPROCESSORS_ONLN	objs/ngx_auto_config.h	307;"	d
+NGX_HAVE_SENDFILE	objs/ngx_auto_config.h	49;"	d
+NGX_HAVE_SENDFILE64	objs/ngx_auto_config.h	54;"	d
 NGX_HAVE_SO_SNDLOWAT	src/core/ngx_config.h	48;"	d
 NGX_HAVE_SO_SNDLOWAT	src/os/unix/ngx_linux_config.h	107;"	d
 NGX_HAVE_SO_SNDLOWAT	src/os/unix/ngx_solaris_config.h	101;"	d
+NGX_HAVE_STATFS	objs/ngx_auto_config.h	102;"	d
+NGX_HAVE_STATVFS	objs/ngx_auto_config.h	107;"	d
+NGX_HAVE_SYSVSHM	objs/ngx_auto_config.h	277;"	d
+NGX_HAVE_SYS_EVENTFD_H	objs/ngx_auto_config.h	172;"	d
+NGX_HAVE_SYS_MOUNT_H	objs/ngx_auto_headers.h	24;"	d
+NGX_HAVE_SYS_PARAM_H	objs/ngx_auto_headers.h	19;"	d
+NGX_HAVE_SYS_PRCTL_H	objs/ngx_auto_headers.h	44;"	d
+NGX_HAVE_SYS_STATVFS_H	objs/ngx_auto_headers.h	29;"	d
+NGX_HAVE_SYS_VFS_H	objs/ngx_auto_headers.h	49;"	d
+NGX_HAVE_TCP_FASTOPEN	objs/ngx_auto_config.h	152;"	d
+NGX_HAVE_TCP_INFO	objs/ngx_auto_config.h	157;"	d
+NGX_HAVE_TRANSPARENT_PROXY	objs/ngx_auto_config.h	127;"	d
+NGX_HAVE_UNISTD_H	objs/ngx_auto_headers.h	4;"	d
+NGX_HAVE_UNIX_DOMAIN	objs/ngx_auto_config.h	177;"	d
 NGX_HAVE_VARIADIC_MACROS	src/core/ngx_log.h	115;"	d
 NGX_HAVE_VARIADIC_MACROS	src/core/ngx_log.h	83;"	d
 NGX_HAVE_VARIADIC_MACROS	src/core/ngx_log.h	99;"	d
@@ -324,6 +397,7 @@ NGX_HTTP_AUTOINDEX_PREALLOCATE	src/http/modules/ngx_http_autoindex_module.c	53;"
 NGX_HTTP_AUTOINDEX_XML	src/http/modules/ngx_http_autoindex_module.c	51;"	d	file:
 NGX_HTTP_BAD_GATEWAY	src/http/ngx_http_request.h	132;"	d
 NGX_HTTP_BAD_REQUEST	src/http/ngx_http_request.h	85;"	d
+NGX_HTTP_CACHE	objs/ngx_auto_config.h	322;"	d
 NGX_HTTP_CACHE_BYPASS	src/http/ngx_http_cache.h	18;"	d
 NGX_HTTP_CACHE_ETAG_LEN	src/http/ngx_http_cache.h	27;"	d
 NGX_HTTP_CACHE_EXPIRED	src/http/ngx_http_cache.h	19;"	d
@@ -379,6 +453,7 @@ NGX_HTTP_FLUSH	src/http/ngx_http.h	134;"	d
 NGX_HTTP_FORBIDDEN	src/http/ngx_http_request.h	87;"	d
 NGX_HTTP_GATEWAY_TIME_OUT	src/http/ngx_http_request.h	134;"	d
 NGX_HTTP_GET	src/http/ngx_http_request.h	29;"	d
+NGX_HTTP_GZIP	objs/ngx_auto_config.h	327;"	d
 NGX_HTTP_GZIP_BUFFERED	src/http/ngx_http_request.h	140;"	d
 NGX_HTTP_GZIP_PROXIED_ANY	src/http/ngx_http_core_module.h	29;"	d
 NGX_HTTP_GZIP_PROXIED_AUTH	src/http/ngx_http_core_module.h	28;"	d
@@ -546,6 +621,7 @@ NGX_HTTP_SIF_CONF	src/http/ngx_http_config.h	45;"	d
 NGX_HTTP_SPECIAL_RESPONSE	src/http/ngx_http_request.h	78;"	d
 NGX_HTTP_SRV_CONF	src/http/ngx_http_config.h	42;"	d
 NGX_HTTP_SRV_CONF_OFFSET	src/http/ngx_http_config.h	51;"	d
+NGX_HTTP_SSI	objs/ngx_auto_config.h	332;"	d
 NGX_HTTP_SSI_ADD_PREFIX	src/http/modules/ngx_http_ssi_filter_module.c	16;"	d	file:
 NGX_HTTP_SSI_ADD_ZERO	src/http/modules/ngx_http_ssi_filter_module.c	17;"	d	file:
 NGX_HTTP_SSI_BLOCK_NAME	src/http/modules/ngx_http_ssi_filter_module.c	238;"	d	file:
@@ -618,6 +694,7 @@ NGX_HTTP_UPSTREAM_IGN_XA_REDIRECT	src/http/ngx_http_upstream.h	46;"	d
 NGX_HTTP_UPSTREAM_INVALID_HEADER	src/http/ngx_http_upstream.h	43;"	d
 NGX_HTTP_UPSTREAM_MAX_FAILS	src/http/ngx_http_upstream.h	107;"	d
 NGX_HTTP_UPSTREAM_WEIGHT	src/http/ngx_http_upstream.h	106;"	d
+NGX_HTTP_UPSTREAM_ZONE	objs/ngx_auto_config.h	352;"	d
 NGX_HTTP_UPS_CONF	src/http/ngx_http_config.h	44;"	d
 NGX_HTTP_USERID_LOG	src/http/modules/ngx_http_userid_filter_module.c	14;"	d	file:
 NGX_HTTP_USERID_MAX_EXPIRES	src/http/modules/ngx_http_userid_filter_module.c	19;"	d	file:
@@ -710,6 +787,8 @@ NGX_HTTP_WRITE_BUFFERED	src/http/ngx_http_request.h	139;"	d
 NGX_HTTP_WRITING_REQUEST_STATE	src/http/ngx_http_request.h	/^    NGX_HTTP_WRITING_REQUEST_STATE,$/;"	e	enum:__anon206
 NGX_HTTP_WRITING_UPSTREAM_STATE	src/http/ngx_http_request.h	/^    NGX_HTTP_WRITING_UPSTREAM_STATE,$/;"	e	enum:__anon206
 NGX_HTTP_XSLT_REUSE_DTD	src/http/modules/ngx_http_xslt_filter_module.c	26;"	d	file:
+NGX_HTTP_X_FORWARDED_FOR	objs/ngx_auto_config.h	342;"	d
+NGX_HTTP_X_FORWARDED_FOR	objs/ngx_auto_config.h	347;"	d
 NGX_IMAP_AUTHENTICATE	src/mail/ngx_mail.h	267;"	d
 NGX_IMAP_CAPABILITY	src/mail/ngx_mail.h	261;"	d
 NGX_IMAP_LOGIN	src/mail/ngx_mail.h	259;"	d
@@ -719,11 +798,11 @@ NGX_IMAP_NOOP	src/mail/ngx_mail.h	262;"	d
 NGX_IMAP_STARTTLS	src/mail/ngx_mail.h	263;"	d
 NGX_INET6_ADDRSTRLEN	src/core/ngx_inet.h	17;"	d
 NGX_INET_ADDRSTRLEN	src/core/ngx_inet.h	16;"	d
-NGX_INT32_LEN	src/core/ngx_config.h	83;"	d
-NGX_INT64_LEN	src/core/ngx_config.h	84;"	d
-NGX_INT_T_LEN	src/core/ngx_config.h	87;"	d
-NGX_INT_T_LEN	src/core/ngx_config.h	91;"	d
-NGX_INVALID_ARRAY_INDEX	src/core/ngx_config.h	109;"	d
+NGX_INT32_LEN	src/core/ngx_config.h	84;"	d
+NGX_INT64_LEN	src/core/ngx_config.h	85;"	d
+NGX_INT_T_LEN	src/core/ngx_config.h	88;"	d
+NGX_INT_T_LEN	src/core/ngx_config.h	92;"	d
+NGX_INVALID_ARRAY_INDEX	src/core/ngx_config.h	110;"	d
 NGX_INVALID_FILE	src/os/unix/ngx_files.h	49;"	d
 NGX_INVALID_INDEX	src/event/ngx_event.h	16;"	d
 NGX_INVALID_PID	src/os/unix/ngx_process.h	18;"	d
@@ -734,6 +813,7 @@ NGX_IOVS_PREALLOCATE	src/os/unix/ngx_os.h	55;"	d
 NGX_IOVS_PREALLOCATE	src/os/unix/ngx_os.h	57;"	d
 NGX_IO_SENDFILE	src/os/unix/ngx_os.h	16;"	d
 NGX_KEEPALIVE_FACTOR	src/os/unix/ngx_freebsd_config.h	101;"	d
+NGX_KQUEUE_UDATA_T	objs/ngx_auto_config.h	83;"	d
 NGX_LEVEL_EVENT	src/event/ngx_event.h	345;"	d
 NGX_LEVEL_EVENT	src/event/ngx_event.h	359;"	d
 NGX_LEVEL_EVENT	src/event/ngx_event.h	368;"	d
@@ -741,6 +821,7 @@ NGX_LEVEL_EVENT	src/event/ngx_event.h	381;"	d
 NGX_LEVEL_EVENT	src/event/ngx_event.h	390;"	d
 NGX_LINEFEED	src/os/unix/ngx_files.h	158;"	d
 NGX_LINEFEED_SIZE	src/os/unix/ngx_files.h	157;"	d
+NGX_LINUX	objs/ngx_auto_headers.h	39;"	d
 NGX_LISTEN_BACKLOG	src/os/unix/ngx_darwin_config.h	77;"	d
 NGX_LISTEN_BACKLOG	src/os/unix/ngx_freebsd_config.h	97;"	d
 NGX_LISTEN_BACKLOG	src/os/unix/ngx_linux_config.h	102;"	d
@@ -794,20 +875,23 @@ NGX_MAIL_STARTTLS_OFF	src/mail/ngx_mail_ssl_module.h	17;"	d
 NGX_MAIL_STARTTLS_ON	src/mail/ngx_mail_ssl_module.h	18;"	d
 NGX_MAIL_STARTTLS_ONLY	src/mail/ngx_mail_ssl_module.h	19;"	d
 NGX_MAIN_CONF	src/core/ngx_conf_file.h	51;"	d
-NGX_MAXHOSTNAMELEN	src/core/ngx_config.h	122;"	d
-NGX_MAXHOSTNAMELEN	src/core/ngx_config.h	124;"	d
+NGX_MAXHOSTNAMELEN	src/core/ngx_config.h	123;"	d
+NGX_MAXHOSTNAMELEN	src/core/ngx_config.h	125;"	d
 NGX_MAX_ALLOC_FROM_POOL	src/core/ngx_palloc.h	20;"	d
 NGX_MAX_CONF_ERRSTR	src/core/ngx_conf_file.h	74;"	d
 NGX_MAX_DYNAMIC_MODULES	src/core/ngx_module.c	13;"	d	file:
 NGX_MAX_ERROR_STR	src/core/ngx_log.h	76;"	d
-NGX_MAX_INT32_VALUE	src/core/ngx_config.h	129;"	d
-NGX_MAX_INT_T_VALUE	src/core/ngx_config.h	88;"	d
-NGX_MAX_INT_T_VALUE	src/core/ngx_config.h	92;"	d
+NGX_MAX_INT32_VALUE	src/core/ngx_config.h	130;"	d
+NGX_MAX_INT_T_VALUE	src/core/ngx_config.h	89;"	d
+NGX_MAX_INT_T_VALUE	src/core/ngx_config.h	93;"	d
+NGX_MAX_OFF_T_VALUE	objs/ngx_auto_config.h	207;"	d
 NGX_MAX_PATH	src/os/unix/ngx_files.h	207;"	d
 NGX_MAX_PATH	src/os/unix/ngx_files.h	211;"	d
 NGX_MAX_PATH_LEVEL	src/core/ngx_file.h	42;"	d
 NGX_MAX_PROCESSES	src/os/unix/ngx_process.h	47;"	d
-NGX_MAX_UINT32_VALUE	src/core/ngx_config.h	128;"	d
+NGX_MAX_SIZE_T_VALUE	objs/ngx_auto_config.h	197;"	d
+NGX_MAX_TIME_T_VALUE	objs/ngx_auto_config.h	227;"	d
+NGX_MAX_UINT32_VALUE	src/core/ngx_config.h	129;"	d
 NGX_MIN_POOL_SIZE	src/core/ngx_palloc.h	25;"	d
 NGX_MIN_READ_AHEAD	src/core/ngx_open_file_cache.c	21;"	d	file:
 NGX_MODULE_SIGNATURE	src/core/ngx_module.h	224;"	d
@@ -885,6 +969,7 @@ NGX_NOACCEPT_SIGNAL	src/core/ngx_config.h	62;"	d
 NGX_NONE	src/core/ngx_output_chain.c	27;"	d	file:
 NGX_NONE	src/http/ngx_http_request.h	49;"	d
 NGX_NO_RESOLVER	src/core/ngx_resolver.h	35;"	d
+NGX_OFF_T_LEN	objs/ngx_auto_config.h	212;"	d
 NGX_OK	src/core/ngx_core.h	36;"	d
 NGX_OLDPID_EXT	src/core/nginx.h	23;"	d
 NGX_ONESHOT_EVENT	src/event/ngx_event.h	346;"	d
@@ -924,6 +1009,7 @@ NGX_PROCESS_SIGNALLER	src/os/unix/ngx_process_cycle.h	25;"	d
 NGX_PROCESS_SINGLE	src/os/unix/ngx_process_cycle.h	23;"	d
 NGX_PROCESS_WORKER	src/os/unix/ngx_process_cycle.h	26;"	d
 NGX_PROXY_PROTOCOL_MAX_HEADER	src/core/ngx_proxy_protocol.h	16;"	d
+NGX_PTR_SIZE	objs/ngx_auto_config.h	182;"	d
 NGX_RADIX_NO_VALUE	src/core/ngx_radix_tree.h	16;"	d
 NGX_READ_EVENT	src/event/ngx_event.h	323;"	d
 NGX_READ_EVENT	src/event/ngx_event.h	356;"	d
@@ -933,8 +1019,8 @@ NGX_READ_EVENT	src/event/ngx_event.h	387;"	d
 NGX_RECONFIGURE_SIGNAL	src/core/ngx_config.h	63;"	d
 NGX_REGEX_CASELESS	src/core/ngx_regex.h	20;"	d
 NGX_REGEX_NO_MATCHED	src/core/ngx_regex.h	18;"	d
-NGX_REOPEN_SIGNAL	src/core/ngx_config.h	66;"	d
-NGX_REOPEN_SIGNAL	src/core/ngx_config.h	69;"	d
+NGX_REOPEN_SIGNAL	src/core/ngx_config.h	67;"	d
+NGX_REOPEN_SIGNAL	src/core/ngx_config.h	70;"	d
 NGX_RESOLVER_MAX_RECURSION	src/core/ngx_resolver.h	37;"	d
 NGX_RESOLVER_TCP_RSIZE	src/core/ngx_resolver.c	15;"	d	file:
 NGX_RESOLVER_TCP_WSIZE	src/core/ngx_resolver.c	16;"	d	file:
@@ -963,6 +1049,8 @@ NGX_SETPROCTITLE_PAD	src/os/unix/ngx_setproctitle.h	35;"	d
 NGX_SETPROCTITLE_USES_ENV	src/os/unix/ngx_setproctitle.h	26;"	d
 NGX_SETPROCTITLE_USES_ENV	src/os/unix/ngx_setproctitle.h	34;"	d
 NGX_SHUTDOWN_SIGNAL	src/core/ngx_config.h	60;"	d
+NGX_SIG_ATOMIC_T_SIZE	objs/ngx_auto_config.h	187;"	d
+NGX_SIZE_T_LEN	objs/ngx_auto_config.h	202;"	d
 NGX_SLAB_BIG	src/core/ngx_slab.c	13;"	d	file:
 NGX_SLAB_BUSY	src/core/ngx_slab.c	27;"	d	file:
 NGX_SLAB_BUSY	src/core/ngx_slab.c	39;"	d	file:
@@ -1003,6 +1091,7 @@ NGX_SOCKADDRLEN	src/core/ngx_inet.h	31;"	d
 NGX_SOCKADDR_STRLEN	src/core/ngx_inet.h	23;"	d
 NGX_SOCKADDR_STRLEN	src/core/ngx_inet.h	25;"	d
 NGX_SOCKADDR_STRLEN	src/core/ngx_inet.h	27;"	d
+NGX_SRECONFIGURE_SIGNAL	src/core/ngx_config.h	64;"	d
 NGX_SSL_BUFFER	src/event/ngx_event_openssl.h	135;"	d
 NGX_SSL_BUFFERED	src/core/ngx_connection.h	121;"	d
 NGX_SSL_BUFSIZE	src/event/ngx_event_openssl.h	138;"	d
@@ -1032,6 +1121,7 @@ NGX_STREAM_UPSTREAM_MAX_FAILS	src/stream/ngx_stream_upstream.h	20;"	d
 NGX_STREAM_UPSTREAM_WEIGHT	src/stream/ngx_stream_upstream.h	19;"	d
 NGX_STREAM_UPS_CONF	src/stream/ngx_stream.h	163;"	d
 NGX_SYSLOG_MAX_STR	src/core/ngx_syslog.c	12;"	d	file:
+NGX_SYS_NERR	objs/ngx_auto_config.h	247;"	d
 NGX_TCP_NODELAY_DISABLED	src/core/ngx_connection.h	/^    NGX_TCP_NODELAY_DISABLED$/;"	e	enum:__anon48
 NGX_TCP_NODELAY_SET	src/core/ngx_connection.h	/^    NGX_TCP_NODELAY_SET,$/;"	e	enum:__anon48
 NGX_TCP_NODELAY_UNSET	src/core/ngx_connection.h	/^    NGX_TCP_NODELAY_UNSET = 0,$/;"	e	enum:__anon48
@@ -1047,6 +1137,8 @@ NGX_TID_T_FMT	src/os/unix/ngx_thread.h	66;"	d
 NGX_TIMER_INFINITE	src/event/ngx_event_timer.h	17;"	d
 NGX_TIMER_LAZY_DELAY	src/event/ngx_event_timer.h	19;"	d
 NGX_TIME_SLOTS	src/core/ngx_times.c	21;"	d	file:
+NGX_TIME_T_LEN	objs/ngx_auto_config.h	222;"	d
+NGX_TIME_T_SIZE	objs/ngx_auto_config.h	217;"	d
 NGX_UNESCAPE_REDIRECT	src/core/ngx_string.h	204;"	d
 NGX_UNESCAPE_URI	src/core/ngx_string.h	203;"	d
 NGX_UNIX_ADDRSTRLEN	src/core/ngx_inet.h	19;"	d
@@ -3172,7 +3264,7 @@ nginx	src/http/modules/perl/ngx_http_perl_module.c	/^    HV                *ngin
 nginx	src/http/modules/perl/ngx_http_perl_module.h	/^typedef ngx_http_request_t   *nginx;$/;"	t
 nginx_stash	src/http/modules/perl/ngx_http_perl_module.c	/^static HV               *nginx_stash;$/;"	v	file:
 nginx_version	src/core/nginx.h	12;"	d
-ngx_abort	src/core/ngx_config.h	105;"	d
+ngx_abort	src/core/ngx_config.h	106;"	d
 ngx_abs	src/core/ngx_core.h	100;"	d
 ngx_accept_disabled	src/event/ngx_event.c	/^ngx_int_t             ngx_accept_disabled;$/;"	v
 ngx_accept_events	src/event/ngx_event.c	/^ngx_uint_t            ngx_accept_events;$/;"	v
@@ -3193,8 +3285,8 @@ ngx_aio_ctx	src/event/modules/ngx_epoll_module.c	/^aio_context_t               n
 ngx_aiocb_t	src/os/unix/ngx_freebsd_config.h	/^typedef struct aiocb  ngx_aiocb_t;$/;"	t	typeref:struct:aiocb
 ngx_aiocb_t	src/os/unix/ngx_linux_config.h	/^typedef struct iocb  ngx_aiocb_t;$/;"	t	typeref:struct:iocb
 ngx_aiocb_t	src/os/unix/ngx_posix_config.h	/^typedef struct aiocb  ngx_aiocb_t;$/;"	t	typeref:struct:aiocb
-ngx_align	src/core/ngx_config.h	100;"	d
-ngx_align_ptr	src/core/ngx_config.h	101;"	d
+ngx_align	src/core/ngx_config.h	101;"	d
+ngx_align_ptr	src/core/ngx_config.h	102;"	d
 ngx_alloc	src/os/unix/ngx_alloc.c	/^ngx_alloc(size_t size, ngx_log_t *log)$/;"	f
 ngx_alloc_buf	src/core/ngx_buf.h	153;"	d
 ngx_alloc_chain_link	src/core/ngx_buf.c	/^ngx_alloc_chain_link(ngx_pool_t *pool)$/;"	f
@@ -3271,7 +3363,7 @@ ngx_cached_time	src/core/ngx_times.c	/^volatile ngx_time_t     *ngx_cached_time;
 ngx_cacheline_size	src/os/unix/ngx_alloc.c	/^ngx_uint_t  ngx_cacheline_size;$/;"	v
 ngx_calloc	src/os/unix/ngx_alloc.c	/^ngx_calloc(size_t size, ngx_log_t *log)$/;"	f
 ngx_calloc_buf	src/core/ngx_buf.h	154;"	d
-ngx_cdecl	src/core/ngx_config.h	73;"	d
+ngx_cdecl	src/core/ngx_config.h	74;"	d
 ngx_chain_add_copy	src/core/ngx_buf.c	/^ngx_chain_add_copy(ngx_pool_t *pool, ngx_chain_t **chain, ngx_chain_t *in)$/;"	f
 ngx_chain_coalesce_file	src/core/ngx_buf.c	/^ngx_chain_coalesce_file(ngx_chain_t **in, off_t limit)$/;"	f
 ngx_chain_get_free_buf	src/core/ngx_buf.c	/^ngx_chain_get_free_buf(ngx_pool_t *p, ngx_chain_t **free)$/;"	f
@@ -5747,7 +5839,7 @@ ngx_init_setproctitle	src/os/unix/ngx_setproctitle.h	16;"	d
 ngx_init_setproctitle	src/os/unix/ngx_setproctitle.h	42;"	d
 ngx_init_signals	src/os/unix/ngx_process.c	/^ngx_init_signals(ngx_log_t *log)$/;"	f
 ngx_init_zone_pool	src/core/ngx_cycle.c	/^ngx_init_zone_pool(ngx_cycle_t *cycle, ngx_shm_zone_t *zn)$/;"	f	file:
-ngx_inline	src/core/ngx_config.h	114;"	d
+ngx_inline	src/core/ngx_config.h	115;"	d
 ngx_int_t	src/core/ngx_config.h	/^typedef intptr_t        ngx_int_t;$/;"	t
 ngx_io	src/core/ngx_connection.c	/^ngx_os_io_t  ngx_io;$/;"	v
 ngx_iovec_t	src/os/unix/ngx_os.h	/^} ngx_iovec_t;$/;"	t	typeref:struct:__anon149
@@ -5774,7 +5866,7 @@ ngx_kqueue_notify_init	src/event/modules/ngx_kqueue_module.c	/^ngx_kqueue_notify
 ngx_kqueue_process_events	src/event/modules/ngx_kqueue_module.c	/^ngx_kqueue_process_events(ngx_cycle_t *cycle, ngx_msec_t timer,$/;"	f	file:
 ngx_kqueue_set_event	src/event/modules/ngx_kqueue_module.c	/^ngx_kqueue_set_event(ngx_event_t *ev, ngx_int_t filter, ngx_uint_t flags)$/;"	f	file:
 ngx_last_process	src/os/unix/ngx_process.c	/^ngx_int_t        ngx_last_process;$/;"	v
-ngx_libc_cdecl	src/core/ngx_config.h	74;"	d
+ngx_libc_cdecl	src/core/ngx_config.h	75;"	d
 ngx_libc_crypt	src/os/unix/ngx_user.c	/^ngx_libc_crypt(ngx_pool_t *pool, u_char *key, u_char *salt, u_char **encrypted)$/;"	f
 ngx_libc_gmtime	src/os/unix/ngx_time.c	/^ngx_libc_gmtime(time_t s, struct tm *tm)$/;"	f
 ngx_libc_localtime	src/os/unix/ngx_time.c	/^ngx_libc_localtime(time_t s, struct tm *tm)$/;"	f
@@ -6092,8 +6184,10 @@ ngx_methods_names	src/http/ngx_http_core_module.c	/^static ngx_http_method_name_
 ngx_min	src/core/ngx_core.h	102;"	d
 ngx_module_ctx_index	src/core/ngx_module.c	/^ngx_module_ctx_index(ngx_cycle_t *cycle, ngx_uint_t type, ngx_uint_t index)$/;"	f	file:
 ngx_module_index	src/core/ngx_module.c	/^ngx_module_index(ngx_cycle_t *cycle)$/;"	f	file:
+ngx_module_names	objs/ngx_modules.c	/^char *ngx_module_names[] = {$/;"	v
 ngx_module_s	src/core/ngx_module.h	/^struct ngx_module_s {$/;"	s
 ngx_module_t	src/core/ngx_core.h	/^typedef struct ngx_module_s      ngx_module_t;$/;"	t	typeref:struct:ngx_module_s
+ngx_modules	objs/ngx_modules.c	/^ngx_module_t *ngx_modules[] = {$/;"	v
 ngx_modules_n	src/core/ngx_module.c	/^static ngx_uint_t  ngx_modules_n;$/;"	v	file:
 ngx_movemem	src/core/ngx_string.h	140;"	d
 ngx_mp4_atom_data	src/http/modules/ngx_http_mp4_module.c	167;"	d	file:
@@ -6729,6 +6823,7 @@ ngx_stat_writing	src/event/ngx_event.c	/^ngx_atomic_t  *ngx_stat_writing = &ngx_
 ngx_stat_writing0	src/event/ngx_event.c	/^ngx_atomic_t   ngx_stat_writing0;$/;"	v
 ngx_stderr	src/os/unix/ngx_files.h	372;"	d
 ngx_stdout	src/os/unix/ngx_files.h	371;"	d
+ngx_stgw_reconfigure	src/os/unix/ngx_process_cycle.c	/^sig_atomic_t  ngx_stgw_reconfigure;$/;"	v
 ngx_str3Ocmp	src/http/ngx_http_parse.c	41;"	d	file:
 ngx_str3Ocmp	src/http/ngx_http_parse.c	73;"	d	file:
 ngx_str3_cmp	src/http/ngx_http_parse.c	38;"	d	file:

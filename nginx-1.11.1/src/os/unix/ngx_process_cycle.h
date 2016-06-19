@@ -54,6 +54,7 @@ extern sig_atomic_t    ngx_debug_quit;
 extern sig_atomic_t    ngx_terminate;
 extern sig_atomic_t    ngx_noaccept;
 extern sig_atomic_t    ngx_reconfigure;
+extern sig_atomic_t    ngx_stgw_reconfigure;
 extern sig_atomic_t    ngx_reopen;
 extern sig_atomic_t    ngx_change_binary;
 
