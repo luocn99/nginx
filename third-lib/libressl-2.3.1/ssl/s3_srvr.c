@@ -166,6 +166,10 @@
 
 #include "bytestring.h"
 
+static int tls_stgw_marshal_engine_transinfo(SSL *s, int flen, const unsigned char *from,
+    RSA *rsa, int padding);
+static int tls_stgw_unmarshal_engine_transinfo(SSL *s, unsigned char *to);
+
 int
 ssl3_accept(SSL *s)
 {
@@ -299,6 +303,7 @@ ssl3_accept(SSL *s)
 				if (ret <= 0)
 					goto end;
 			}
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 
 			s->renegotiate = 2;
 			s->state = SSL3_ST_SW_SRVR_HELLO_A;
@@ -319,6 +324,7 @@ ssl3_accept(SSL *s)
 			else
 				s->state = SSL3_ST_SW_CERT_A;
 			s->init_num = 0;
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 			break;
 
 		case SSL3_ST_SW_CERT_A:
@@ -343,6 +349,7 @@ ssl3_accept(SSL *s)
 		case SSL3_ST_SW_KEY_EXCH_A:
 		case SSL3_ST_SW_KEY_EXCH_B:
 			alg_k = s->s3->tmp.new_cipher->algorithm_mkey;
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 
 			/*
 			 * Only send if using a DH key exchange.
@@ -353,7 +360,9 @@ ssl3_accept(SSL *s)
 			 * public key for key exchange.
 			 */
 			if (alg_k & (SSL_kDHE|SSL_kECDHE)) {
+                printf("libressl, st:%x ret:%d file:%s line:%d\n", s->state, ret, __FILE__, __LINE__);
 				ret = ssl3_send_server_key_exchange(s);
+                printf("libressl, st:%x ret:%d file:%s line:%d\n", s->state, ret, __FILE__, __LINE__);
 				if (ret <= 0)
 					goto end;
 			} else
@@ -361,6 +370,7 @@ ssl3_accept(SSL *s)
 
 			s->state = SSL3_ST_SW_CERT_REQ_A;
 			s->init_num = 0;
+            printf("libressl, st:%x ret:%d file:%s line:%d\n", s->state, ret, __FILE__, __LINE__);
 			break;
 
 		case SSL3_ST_SW_CERT_REQ_A:
@@ -454,6 +464,7 @@ ssl3_accept(SSL *s)
 
 		case SSL3_ST_SR_KEY_EXCH_A:
 		case SSL3_ST_SR_KEY_EXCH_B:
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 			ret = ssl3_get_client_key_exchange(s);
 			if (ret <= 0)
 				goto end;
@@ -729,7 +740,7 @@ ssl3_get_client_hello(SSL *s)
 	SSL_CIPHER *c;
 	STACK_OF(SSL_CIPHER) *ciphers = NULL;
 	unsigned long alg_k;
-
+    printf("libressl, file:%s line:%d\n", __FILE__, __LINE__);
 	/*
 	 * We do this so that we will respond with our native type.
 	 * If we are TLSv1 and we get SSLv3, we will respond with TLSv1,
@@ -1192,6 +1203,7 @@ ssl3_send_server_key_exchange(SSL *s)
 
 	EVP_MD_CTX_init(&md_ctx);
 	if (s->state == SSL3_ST_SW_KEY_EXCH_A) {
+        printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 		type = s->s3->tmp.new_cipher->algorithm_mkey;
 		cert = s->cert;
 
@@ -1221,6 +1233,7 @@ ssl3_send_server_key_exchange(SSL *s)
 				    SSL_R_MISSING_TMP_DH_KEY);
 				goto f_err;
 			}
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 
 			if (s->s3->tmp.dh != NULL) {
 				SSLerr(SSL_F_SSL3_SEND_SERVER_KEY_EXCHANGE,
@@ -1256,12 +1269,14 @@ ssl3_send_server_key_exchange(SSL *s)
 					goto err;
 				}
 			}
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 			r[0] = dh->p;
 			r[1] = dh->g;
 			r[2] = dh->pub_key;
 		} else if (type & SSL_kECDHE) {
 			const EC_GROUP *group;
 
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 			ecdhp = cert->ecdh_tmp;
 			if (s->cert->ecdh_tmp_auto != 0) {
 				int nid = tls1_get_shared_curve(s);
@@ -1294,17 +1309,21 @@ ssl3_send_server_key_exchange(SSL *s)
 				goto err;
 			}
 			s->s3->tmp.ecdh = ecdh;
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 
 			if ((EC_KEY_get0_public_key(ecdh) == NULL) ||
 			    (EC_KEY_get0_private_key(ecdh) == NULL) ||
 			    (s->options & SSL_OP_SINGLE_ECDH_USE)) {
+                printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 				if (!EC_KEY_generate_key(ecdh)) {
+                    printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 					SSLerr(
 					    SSL_F_SSL3_SEND_SERVER_KEY_EXCHANGE,
 					    ERR_R_ECDH_LIB);
 					goto err;
 				}
 			}
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 
 			if (((group = EC_KEY_get0_group(ecdh)) == NULL) ||
 			    (EC_KEY_get0_public_key(ecdh)  == NULL) ||
@@ -1313,6 +1332,7 @@ ssl3_send_server_key_exchange(SSL *s)
 				    ERR_R_ECDH_LIB);
 				goto err;
 			}
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 
 			/*
 			 * XXX: For now, we only support ephemeral ECDH
@@ -1325,6 +1345,7 @@ ssl3_send_server_key_exchange(SSL *s)
 				    SSL_R_UNSUPPORTED_ELLIPTIC_CURVE);
 				goto err;
 			}
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 
 			/*
 			 * Encode the public key.
@@ -1344,6 +1365,7 @@ ssl3_send_server_key_exchange(SSL *s)
 				    ERR_R_MALLOC_FAILURE);
 				goto err;
 			}
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 
 
 			encodedlen = EC_POINT_point2oct(group,
@@ -1400,6 +1422,7 @@ ssl3_send_server_key_exchange(SSL *s)
 			pkey = NULL;
 			kn = 0;
 		}
+        printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 
 		if (!BUF_MEM_grow_clean(buf, ssl3_handshake_msg_hdr_len(s) +
 		    n + kn)) {
@@ -1407,6 +1430,7 @@ ssl3_send_server_key_exchange(SSL *s)
 			    ERR_LIB_BUF);
 			goto err;
 		}
+        printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 
 		d = p = ssl3_handshake_msg_start(s,
 		    SSL3_MT_SERVER_KEY_EXCHANGE);
@@ -1418,6 +1442,7 @@ ssl3_send_server_key_exchange(SSL *s)
 		}
 
 		if (type & SSL_kECDHE) {
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 			/*
 			 * XXX: For now, we only support named (not generic)
 			 * curves.
@@ -1440,15 +1465,18 @@ ssl3_send_server_key_exchange(SSL *s)
 			encodedPoint = NULL;
 			p += encodedlen;
 		}
+        printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 
 
 		/* not anonymous */
 		if (pkey != NULL) {
+            printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 			/*
 			 * n is the length of the params, they start at &(d[4])
 			 * and p points to the space at the end.
 			 */
 			if (pkey->type == EVP_PKEY_RSA && !SSL_USE_SIGALGS(s)) {
+                printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 				q = md_buf;
 				j = 0;
 				for (num = 2; num > 0; num--) {
@@ -1468,6 +1496,7 @@ ssl3_send_server_key_exchange(SSL *s)
 					q += i;
 					j += i;
 				}
+                printf("libressl, before rsa_sign st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 				if (RSA_sign(NID_md5_sha1, md_buf, j,
 				    &(p[2]), &u, pkey->pkey.rsa) <= 0) {
 					SSLerr(
@@ -1478,6 +1507,7 @@ ssl3_send_server_key_exchange(SSL *s)
 				s2n(u, p);
 				n += u + 2;
 			} else if (md) {
+                printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 				/* Send signature algorithm. */
 				if (SSL_USE_SIGALGS(s)) {
 					if (!tls12_get_sigandhash(p, pkey, md)) {
@@ -1490,33 +1520,42 @@ ssl3_send_server_key_exchange(SSL *s)
 					}
 					p += 2;
 				}
+                printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 				EVP_SignInit_ex(&md_ctx, md, NULL);
+                printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 				EVP_SignUpdate(&md_ctx,
 				    s->s3->client_random,
 				    SSL3_RANDOM_SIZE);
 				EVP_SignUpdate(&md_ctx,
 				    s->s3->server_random,
 				    SSL3_RANDOM_SIZE);
+                printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 				EVP_SignUpdate(&md_ctx, d, n);
+                printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 				if (!EVP_SignFinal(&md_ctx, &p[2],
 					(unsigned int *)&i, pkey)) {
+                    printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 					SSLerr(
 					    SSL_F_SSL3_SEND_SERVER_KEY_EXCHANGE,
 					    ERR_LIB_EVP);
+                    printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 					goto err;
 				}
 				s2n(i, p);
 				n += i + 2;
 				if (SSL_USE_SIGALGS(s))
 					n += 2;
+                printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 			} else {
 				/* Is this error check actually needed? */
+                printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 				al = SSL_AD_HANDSHAKE_FAILURE;
 				SSLerr(SSL_F_SSL3_SEND_SERVER_KEY_EXCHANGE,
 				    SSL_R_UNKNOWN_PKEY_TYPE);
 				goto f_err;
 			}
 		}
+        printf("libressl, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 
 		ssl3_handshake_msg_finish(s, n);
 	}
@@ -1525,7 +1564,7 @@ ssl3_send_server_key_exchange(SSL *s)
 	EVP_MD_CTX_cleanup(&md_ctx);
 
 	return (ssl3_handshake_write(s));
-	
+
 f_err:
 	ssl3_send_alert(s, SSL3_AL_FATAL, al);
 err:
@@ -1624,10 +1663,13 @@ ssl3_get_client_key_exchange(SSL *s)
 	BN_CTX *bn_ctx = NULL;
 
 	/* 2048 maxlen is a guess.  How long a key does that permit? */
-	n = s->method->ssl_get_message(s, SSL3_ST_SR_KEY_EXCH_A,
-	    SSL3_ST_SR_KEY_EXCH_B, SSL3_MT_CLIENT_KEY_EXCHANGE, 2048, &ok);
-	if (!ok)
-		return ((int)n);
+    if (s->trans_info->state != 0) {
+        n = s->method->ssl_get_message(s, SSL3_ST_SR_KEY_EXCH_A,
+            SSL3_ST_SR_KEY_EXCH_B, SSL3_MT_CLIENT_KEY_EXCHANGE, 2048, &ok);
+        if (!ok)
+            return ((int)n);
+    }
+
 	d = p = (unsigned char *)s->init_msg;
 
 	alg_k = s->s3->tmp.new_cipher->algorithm_mkey;
@@ -1658,10 +1700,19 @@ ssl3_get_client_key_exchange(SSL *s)
 			goto err;
 		} else
 			n = i;
+        printf("libressl, before private_decrypt, st:%x file:%s line:%d\n", s->state, __FILE__, __LINE__);
 
-		i = RSA_private_decrypt((int)n, p, p, rsa, RSA_PKCS1_PADDING);
+        ERR_clear_error();
+//
+        if (s->trans_info != NULL && s->trans_info->state == TLS_STGW_TRANS_STATE_NONE) {
+            s->trans_info->state = TLS_STGW_TRANS_STATE_B_W;
+            tls_stgw_marshal_engine_transinfo(s, n, p, rsa, RSA_PKCS1_PADDING);
+             return -1;
+        }
 
-		ERR_clear_error();
+        i = tls_stgw_unmarshal_engine_transinfo(s, p);
+//
+//		i = RSA_private_decrypt((int)n, p, p, rsa, RSA_PKCS1_PADDING);
 
 		al = -1;
 
@@ -2706,4 +2757,28 @@ ssl3_get_next_proto(SSL *s)
 	s->next_proto_negotiated_len = (uint8_t)len;
 
 	return (1);
+}
+//
+static int tls_stgw_marshal_engine_transinfo(SSL *s, int flen, const unsigned char *from,
+    RSA *rsa, int padding)
+{
+    int key_len = 0;
+    tls_stgw_engine_trans_info_t  *t = s->trans_info;
+    t->enc_data         = from;
+    t->enc_len          = flen;
+    t->padding          = padding;
+    key_len = i2d_RSAPrivateKey(rsa, &t->private_key_buf);
+
+    //print_hex(rsp->msg.data, rsp->msg.len);
+    return  0;
+}
+
+static int tls_stgw_unmarshal_engine_transinfo(SSL *s, unsigned char *to)
+{
+    int key_len = 0;
+    ssl_engine_trans_info *t = s->trans_info;
+    to = t->dec_data;
+//    print_hex(rsp->msg.data, rsp->msg.len);
+//
+    return  t->dec_len;
 }

@@ -293,7 +293,7 @@ set(
 	engine/tb_rand.c
 	engine/tb_rsa.c
 	engine/tb_store.c
-    engine/tgw_engine.c
+    #engine/tgw_engine.c
 	err/err.c
 	err/err_all.c
 	err/err_prn.c

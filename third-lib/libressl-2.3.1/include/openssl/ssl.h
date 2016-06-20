@@ -993,6 +993,24 @@ void SSL_get0_alpn_selected(const SSL *ssl, const unsigned char **data,
 
 #ifndef OPENSSL_NO_SSL_INTERN
 
+#define TLS_STGW_TRANS_STATE_NONE 0 // need no to r/w trans info
+#define TLS_STGW_TRANS_STATE_B_W 1  // before write
+#define TLS_STGW_TRANS_STATE_A_W 2  // after write
+#define TLS_STGW_TRANS_STATE_B_R 3  // before read
+#define TLS_STGW_TRANS_STATE_A_R 4  // after read
+
+struct tls_stgw_engine_trans_info_s {
+    int         state;
+    int         padding;
+    uint8_t    *private_key_buf;
+    uint8_t    *enc_data;
+    int         enc_len;
+    uint8_t    *dec_data;
+    int         dec_len;
+};
+
+typedef struct tls_stgw_engine_trans_info_s tls_stgw_engine_trans_info_t;
+
 struct ssl_st {
 	/* protocol version
 	 * (one of SSL2_VERSION, SSL3_VERSION, TLS1_VERSION, DTLS1_VERSION)
@@ -1215,6 +1233,8 @@ struct ssl_st {
 		 	 * 2 if we are a server and are inside a handshake
 	                 * (i.e. not just sending a HelloRequest) */
 
+    // used for remote engine transfer info
+    tls_stgw_engine_trans_info_t  *trans_info;
 };
 
 #endif

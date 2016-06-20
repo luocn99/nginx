@@ -8,6 +8,8 @@
 #include <ngx_config.h>
 #include <ngx_core.h>
 #include <ngx_event.h>
+#include <ngx_event_connection.h>
+#include "tgw_engine.h"
 
 
 #define NGX_SSL_PASSWORD_BUFFER_SIZE  4096
@@ -60,6 +62,7 @@ static void *ngx_openssl_create_conf(ngx_cycle_t *cycle);
 static char *ngx_openssl_engine(ngx_conf_t *cf, ngx_command_t *cmd, void *conf);
 static void ngx_openssl_exit(ngx_cycle_t *cycle);
 
+static void ngx_ssl_handle_tgw_engine(ngx_connection_t * c);
 
 static ngx_command_t  ngx_openssl_commands[] = {
 
@@ -1029,7 +1032,7 @@ ngx_int_t
 ngx_ssl_create_connection(ngx_ssl_t *ssl, ngx_connection_t *c, ngx_uint_t flags)
 {
     ngx_ssl_connection_t  *sc;
-
+    ngx_ssl_engine_connection_t *ec;
     sc = ngx_pcalloc(c->pool, sizeof(ngx_ssl_connection_t));
     if (sc == NULL) {
         return NGX_ERROR;
@@ -1064,6 +1067,13 @@ ngx_ssl_create_connection(ngx_ssl_t *ssl, ngx_connection_t *c, ngx_uint_t flags)
 
     c->ssl = sc;
 
+    ec = ngx_pcalloc(c->pool, sizeof(ngx_ssl_engine_connection_t));
+    if (ec == NULL) {
+         ngx_ssl_error(NGX_LOG_ALERT, c->log, 0, "SSL_new_engine_conn() faile");
+         return NGX_ERROR;
+    }
+
+    ec->connection = ngx_get_connection(1, c->log);
     return NGX_OK;
 }
 
@@ -1169,7 +1179,14 @@ ngx_ssl_handshake(ngx_connection_t *c)
 
         return NGX_OK;
     }
+//
+    if (c->ssl->connection->transinfo && c->ssl->connection->transinfo->state == TLS_STGW_TRANS_STATE_B_W) {
+        return ngx_stgw_engine_handle(c);
+        ngx_stgw_marshal_trans_pb();
+        ngx_stgw_handle_tgw_engine(c);
+    }
 
+//
     sslerr = SSL_get_error(c->ssl->connection, n);
 
     ngx_log_debug1(NGX_LOG_DEBUG_EVENT, c->log, 0, "SSL_get_error: %d", sslerr);
@@ -1247,6 +1264,12 @@ ngx_ssl_handshake_handler(ngx_event_t *ev)
     }
 
     c->ssl->handler(c);
+}
+
+static void
+ngx_ssl_handle_tgw_engine(ngx_connection_t * c)
+{
+    return;
 }
 
 
@@ -3481,6 +3504,7 @@ static char *
 ngx_openssl_engine(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
 #ifndef OPENSSL_NO_ENGINE
+    ENGINE_load_tgw();
 
     ngx_openssl_conf_t *oscf = conf;
 
@@ -3496,12 +3520,14 @@ ngx_openssl_engine(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     value = cf->args->elts;
 
     engine = ENGINE_by_id((const char *) value[1].data);
+    printf("my ngx engine_id:%s file:%s line:%d\n", value[1].data, __FILE__, __LINE__);
 
     if (engine == NULL) {
         ngx_ssl_error(NGX_LOG_WARN, cf->log, 0,
                       "ENGINE_by_id(\"%V\") failed", &value[1]);
         return NGX_CONF_ERROR;
     }
+    printf("my ngx engine_id:%s file:%s line:%d\n", value[1].data, __FILE__, __LINE__);
 
     if (ENGINE_set_default(engine, ENGINE_METHOD_ALL) == 0) {
         ngx_ssl_error(NGX_LOG_WARN, cf->log, 0,
@@ -3533,3 +3559,4 @@ ngx_openssl_exit(ngx_cycle_t *cycle)
     ENGINE_cleanup();
 #endif
 }
+

@@ -16,6 +16,7 @@ ROOT_PATH=`pwd`
 UTIL_PATH=$ROOT_PATH/third-lib/
 PCRE_PATH=$UTIL_PATH/pcre-8.36
 OPENSSL_PATH=$UTIL_PATH/libressl-2.3.1/
+#OPENSSL_PATH=$UTIL_PATH/openssl-1.0.2d/
 NGX_PATH="./nginx-1.9.5"
 cd $NGX_PATH
 ./configure \

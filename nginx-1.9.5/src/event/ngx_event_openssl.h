@@ -43,6 +43,54 @@ typedef struct {
     size_t                      buffer_size;
 } ngx_ssl_t;
 
+//
+/*
+typedef void (*ngx_stgw_upstream_handler_pt)(ngx_stgw_engine_request_t *r,
+    ngx_stgw_upstream_t *u);
+
+typedef struct ngx_stgw_request_s ngx_stgw_reuqest_t;
+
+struct ngx_stgw_request_s {
+    int id;
+};
+
+typedef struct ngx_stgw_peer_connection_s ngx_stgw_peer_connection_t;
+
+typedef struct {
+    ngx_msec_t                       bl_time;
+    ngx_uint_t                       bl_state;
+
+    ngx_uint_t                       status;
+    ngx_msec_t                       response_time;
+    ngx_msec_t                       connect_time;
+    ngx_msec_t                       header_time;
+    off_t                            response_length;
+
+    ngx_str_t                       *peer;
+} ngx_stgw_upstream_state_t;
+
+typedef struct ngx_stgw_upstream_s {
+    ngx_stgw_peer_connection_t       peer;
+
+    ngx_int_t                      (*create_request)(ngx_stgw_request_t *r);
+    ngx_int_t                      (*reinit_request)(ngx_stgw_request_t *r);
+    ngx_int_t                      (*process_header)(ngx_stgw_request_t *r);
+    void                           (*abort_request)(ngx_stgw_request_t *r);
+    void                           (*finalize_request)(ngx_stgw_request_t *r,
+                                         ngx_int_t rc);
+
+    ngx_msec_t                       timeout;
+
+    ngx_stgw_upstream_state_t       *state;
+
+    ngx_str_t                        method;
+
+    ngx_http_cleanup_pt             *cleanup;
+
+    unsigned                         cacheable:1;
+} ngx_stgw_upstream_t;
+*/
+//
 
 typedef struct {
     ngx_ssl_conn_t             *connection;
@@ -55,6 +103,12 @@ typedef struct {
 
     ngx_event_handler_pt        saved_read_handler;
     ngx_event_handler_pt        saved_write_handler;
+
+//
+    ngx_stgw_upstream_t        *su;
+//
+    ngx_event_handler_pt        tgw_engine_read_handler;
+    ngx_event_handler_pt        tgw_engine_write_handler;
 
     unsigned                    handshaked:1;
     unsigned                    renegotiation:1;

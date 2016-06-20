@@ -336,7 +336,6 @@ crypto__shared_EXTERNAL_OBJECTS = \
 "/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/crypto/CMakeFiles/crypto-objects.dir/engine/tb_rand.c.o" \
 "/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/crypto/CMakeFiles/crypto-objects.dir/engine/tb_rsa.c.o" \
 "/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/crypto/CMakeFiles/crypto-objects.dir/engine/tb_store.c.o" \
-"/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/crypto/CMakeFiles/crypto-objects.dir/engine/tgw_engine.c.o" \
 "/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/crypto/CMakeFiles/crypto-objects.dir/err/err.c.o" \
 "/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/crypto/CMakeFiles/crypto-objects.dir/err/err_all.c.o" \
 "/home/lancelot/git/nginx/third-lib/libressl-2.3.1/build/crypto/CMakeFiles/crypto-objects.dir/err/err_prn.c.o" \
@@ -886,7 +885,6 @@ crypto/libcrypto.so.36.0.0: crypto/CMakeFiles/crypto-objects.dir/engine/tb_pkmet
 crypto/libcrypto.so.36.0.0: crypto/CMakeFiles/crypto-objects.dir/engine/tb_rand.c.o
 crypto/libcrypto.so.36.0.0: crypto/CMakeFiles/crypto-objects.dir/engine/tb_rsa.c.o
 crypto/libcrypto.so.36.0.0: crypto/CMakeFiles/crypto-objects.dir/engine/tb_store.c.o
-crypto/libcrypto.so.36.0.0: crypto/CMakeFiles/crypto-objects.dir/engine/tgw_engine.c.o
 crypto/libcrypto.so.36.0.0: crypto/CMakeFiles/crypto-objects.dir/err/err.c.o
 crypto/libcrypto.so.36.0.0: crypto/CMakeFiles/crypto-objects.dir/err/err_all.c.o
 crypto/libcrypto.so.36.0.0: crypto/CMakeFiles/crypto-objects.dir/err/err_prn.c.o

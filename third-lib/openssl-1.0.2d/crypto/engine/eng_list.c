@@ -324,6 +324,13 @@ static void engine_cpy(ENGINE *dest, const ENGINE *src)
 ENGINE *ENGINE_by_id(const char *id)
 {
     ENGINE *iterator;
+    ENGINE *tmp;
+    tmp = engine_list_head;
+    while (tmp) {
+        printf("tmp engine id:%s, file:%s line:%d\n", tmp->id, __FILE__, __LINE__);
+        tmp = tmp->next;
+    }
+    printf("my openssl, file:%s line:%d\n", __FILE__, __LINE__);
     char *load_dir = NULL;
     if (id == NULL) {
         ENGINEerr(ENGINE_F_ENGINE_BY_ID, ERR_R_PASSED_NULL_PARAMETER);
@@ -352,6 +359,7 @@ ENGINE *ENGINE_by_id(const char *id)
             engine_ref_debug(iterator, 0, 1)
         }
     }
+    printf("my openssl, file:%s line:%d\n", __FILE__, __LINE__);
     CRYPTO_w_unlock(CRYPTO_LOCK_ENGINE);
 #if 0
     if (iterator == NULL) {
@@ -366,6 +374,7 @@ ENGINE *ENGINE_by_id(const char *id)
     /*
      * Prevent infinite recusrion if we're looking for the dynamic engine.
      */
+    printf("my openssl,id:%s  file:%s line:%d\n", id, __FILE__, __LINE__);
     if (strcmp(id, "dynamic")) {
 # ifdef OPENSSL_SYS_VMS
         if ((load_dir = getenv("OPENSSL_ENGINES")) == 0)
@@ -374,6 +383,7 @@ ENGINE *ENGINE_by_id(const char *id)
         if ((load_dir = getenv("OPENSSL_ENGINES")) == 0)
             load_dir = ENGINESDIR;
 # endif
+    printf("my openssl, file:%s line:%d\n", __FILE__, __LINE__);
         iterator = ENGINE_by_id("dynamic");
         if (!iterator || !ENGINE_ctrl_cmd_string(iterator, "ID", id, 0) ||
             !ENGINE_ctrl_cmd_string(iterator, "DIR_LOAD", "2", 0) ||
