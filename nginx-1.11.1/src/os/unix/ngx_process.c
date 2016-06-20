@@ -362,7 +362,7 @@ ngx_signal_handler(int signo)
             break;
 
         //case ngx_signal_value(NGX_SRECONFIGURE_SIGNAL):
-        case SIGRTMIN + 10:
+        //case SIGRTMIN + 10:
             ngx_stgw_dyn_reconfigure = 1;
             action = ", stgw dyn reconfiguring";
             break;
