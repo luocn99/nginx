@@ -41,9 +41,9 @@ ngx_signal_t  signals[] = {
       "SIG" ngx_value(NGX_RECONFIGURE_SIGNAL),
       "reload",
       ngx_signal_handler },
-    { 50,
-      "SIGRTMIN + 10",
-      "sreload",
+    { 44,
+      "SIGRTMIN+10",
+      "stgw_dyn_reload",
       ngx_signal_handler },
 
     { ngx_signal_value(NGX_REOPEN_SIGNAL),
@@ -362,7 +362,7 @@ ngx_signal_handler(int signo)
             break;
 
         //case ngx_signal_value(NGX_SRECONFIGURE_SIGNAL):
-        //case SIGRTMIN + 10:
+        case 44:
             ngx_stgw_dyn_reconfigure = 1;
             action = ", stgw dyn reconfiguring";
             break;

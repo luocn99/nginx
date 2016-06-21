@@ -96,6 +96,7 @@ ngx_master_process_cycle(ngx_cycle_t *cycle)
     sigaddset(&set, ngx_signal_value(NGX_NOACCEPT_SIGNAL));
     sigaddset(&set, ngx_signal_value(NGX_TERMINATE_SIGNAL));
     sigaddset(&set, ngx_signal_value(NGX_SHUTDOWN_SIGNAL));
+    sigaddset(&set, SIGRTMIN+10);
     sigaddset(&set, ngx_signal_value(NGX_CHANGEBIN_SIGNAL));
 
     if (sigprocmask(SIG_BLOCK, &set, NULL) == -1) {
@@ -269,10 +270,6 @@ ngx_master_process_cycle(ngx_cycle_t *cycle)
             ccf = (ngx_core_conf_t *) ngx_get_conf(cycle->conf_ctx,
                                                    ngx_core_module);
 
-            ngx_signal_worker_processes(cycle,
-                                        ngx_signal_value(NGX_SHUTDOWN_SIGNAL));
-
-            //
         }
 
         if (ngx_restart) {
@@ -345,6 +342,19 @@ ngx_single_process_cycle(ngx_cycle_t *cycle)
         if (ngx_reconfigure) {
             ngx_reconfigure = 0;
             ngx_log_error(NGX_LOG_NOTICE, cycle->log, 0, "reconfiguring");
+            if (ngx_set_environment(cycle, NULL) == NULL) {
+                /* fatal */
+                exit(2);
+            }
+
+            for (i = 0; cycle->modules[i]; i++) {
+                if (cycle->modules[i]->init_process) {
+                    if (cycle->modules[i]->init_process(cycle) == NGX_ERROR) {
+                        /* fatal */
+                        exit(2);
+                    }
+                }
+            }
 
             cycle = ngx_init_cycle(cycle);
             if (cycle == NULL) {
@@ -801,6 +811,7 @@ ngx_worker_process_cycle(ngx_cycle_t *cycle, void *data)
         }
 
         if (ngx_stgw_dyn_reconfigure) {
+            ngx_log_error(NGX_LOG_NOTICE, cycle->log, 0, "stgw dyn reconfiguring");
             //
         }
     }
